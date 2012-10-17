@@ -1,0 +1,8 @@
+{
+    "name": "teco-js",
+    "description": "Apontador's shared javascript components",
+    "version": "0.0.1",
+    "dependencies": {
+        "jamjs": "*"
+    }
+}
