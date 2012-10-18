@@ -6,6 +6,7 @@
         "jamjs": "*"
     },
     "jam": {
+        "packageDir": "src",
         "dependencies": {
             "bootstrap": "*"
         }
