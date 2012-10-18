@@ -4,5 +4,10 @@
     "version": "0.0.1",
     "dependencies": {
         "jamjs": "*"
+    },
+    "jam": {
+        "dependencies": {
+            "bootstrap": "*"
+        }
     }
 }
