@@ -15,6 +15,7 @@ Em seu terminal, execute*:
 
 ```bash
 git clone git@github.com:apontador/teco-js.git
+cd teco-js
 npm install
 ./node_modules/.bin/jam install
 ```
