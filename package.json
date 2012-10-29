@@ -9,6 +9,7 @@
     "jam": {
         "packageDir": "src",
         "dependencies": {
+            "jasmine": "*",
             "bootstrap": "*"
         }
     }
