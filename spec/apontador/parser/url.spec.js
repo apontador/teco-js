@@ -2,12 +2,12 @@
 require(['urlParser'], function (urlParser) {
     'use strict';
     describe("Url Parser",  function () {
+        var poi, pathname;
+        beforeEach(function () {
+            pathname = "/local/pr/campo_largo/automoveis_e_veiculos/222Z836E/concessionaria_gm___spack__oa_.html";
+            poi = urlParser.poi(pathname);
+        });
         describe("with a poi url",  function () {
-            var poi, pathname;
-            beforeEach(function () {
-                pathname = "/local/pr/campo_largo/automoveis_e_veiculos/222Z836E/concessionaria_gm___spack__oa_.html";
-                poi = urlParser.poi(pathname);
-            });
             it("should get poi state", function () {
                 expect(poi.state).toBe('pr');
             });
@@ -19,7 +19,6 @@ require(['urlParser'], function (urlParser) {
             });
         });
         describe("with an invalid url",  function () {
-            var poi, pathname;
             beforeEach(function () {
                 pathname = "/local/search.html";
                 poi = urlParser.poi(pathname);
