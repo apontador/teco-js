@@ -1,5 +1,4 @@
 define(
-    'urlParser',
     function () {
         'use strict';
         var poi, isPoiPathname;

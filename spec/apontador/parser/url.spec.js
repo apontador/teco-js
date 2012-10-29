@@ -1,5 +1,5 @@
 /*global describe:true, it:true, expect:true, beforeEach:true*/
-require(['urlParser'], function (urlParser) {
+require(['../src/apontador/parser/url'], function (urlParser) {
     'use strict';
     describe("Url Parser",  function () {
         describe("with a poi url",  function () {
