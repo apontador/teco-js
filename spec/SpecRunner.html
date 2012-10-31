@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+  <link rel="shortcut icon" type="image/png" href="../jam/jasmine/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="../jam/jasmine/jasmine.css">
+  <script type="text/javascript" src="../jam/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="../jam/jasmine/jasmine-html.js"></script>
+
+  <script type="text/javascript" src="../jam/require.js"></script>
+  <script type="text/javascript">
+      require.config({
+        "baseUrl": "../"
+      })
+  </script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="apontador/parser/url.spec.js"></script>
+  <script type="text/javascript" src="apontador/tracker/gm.spec.js"></script>
+
+  <!-- include source files here... -->
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>
