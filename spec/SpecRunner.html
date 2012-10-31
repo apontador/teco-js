@@ -3,11 +3,17 @@
 <html>
 <head>
   <title>Jasmine Spec Runner</title>
-  <link rel="shortcut icon" type="image/png" href="../src/jasmine/jasmine_favicon.png">
-  <link rel="stylesheet" type="text/css" href="../src/jasmine/jasmine.css">
-  <script type="text/javascript" src="../src/require.js"></script>
-  <script type="text/javascript" src="../src/jasmine/jasmine.js"></script>
-  <script type="text/javascript" src="../src/jasmine/jasmine-html.js"></script>
+  <link rel="shortcut icon" type="image/png" href="../jam/jasmine/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="../jam/jasmine/jasmine.css">
+  <script type="text/javascript" src="../jam/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="../jam/jasmine/jasmine-html.js"></script>
+
+  <script type="text/javascript" src="../jam/require.js"></script>
+  <script type="text/javascript">
+      require.config({
+        "baseUrl": "../"
+      })
+  </script>
 
   <!-- include spec files here... -->
   <script type="text/javascript" src="apontador/parser/url.spec.js"></script>

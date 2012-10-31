@@ -1,5 +1,5 @@
 /*global describe:true, it:true, expect:true, beforeEach:true*/
-require(['../src/apontador/tracker/gm'], function (gmTracker) {
+require(['apontador/tracker/gm'], function (gmTracker) {
     'use strict';
     describe('GM Tracker', function () {
         var element;

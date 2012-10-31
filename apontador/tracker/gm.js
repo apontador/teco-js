@@ -1,5 +1,5 @@
 define(
-    ['../parser/url'],
+    ['apontador/parser/url'],
     function (urlParser) {
         'use strict';
         var track,
