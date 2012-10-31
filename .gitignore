@@ -1,6 +1,5 @@
 /node_modules
 /compiled
-/src/*
-!/src/apontador
+/jam/*
 *.swo
 *.swp
