@@ -1,5 +1,5 @@
-/*global describe, it, expect, Detector*/
-require(["apontador/browser/detector"], function () {
+/*global describe, it, expect*/
+require(["apontador/browser/detector"], function (Detector) {
     "use strict";
     var ua = {
         // apple source: http://developer.apple.com/library/ios/#documentation/AppleApplications/Reference/SafariWebContent/OptimizingforSafarioniPhone/OptimizingforSafarioniPhone.html
