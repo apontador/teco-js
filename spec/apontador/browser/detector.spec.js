@@ -1,4 +1,4 @@
-/*global describe, it, expect*/
+/*global describe, it, expect, navigator*/
 require(["apontador/browser/detector"], function (Detector) {
     "use strict";
     var ua = {
@@ -29,6 +29,10 @@ require(["apontador/browser/detector"], function (Detector) {
     };
 
     describe("Browser Detector", function () {
+        it("should fill the agent with the navigator's user agent when not given", function () {
+            var detector = new Detector();
+            expect(detector.agent).toEqual(navigator.userAgent);
+        });
         it("should detect an iPhone as mobile", function () {
             var detector = new Detector(ua.ios_phone);
             expect(detector.isMobile()).toBeTruthy();
