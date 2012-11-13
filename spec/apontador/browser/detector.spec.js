@@ -25,6 +25,7 @@ require(["apontador/browser/detector"], function (Detector) {
         //opera source: http://my.opera.com/community/openweb/idopera/
         "opera_mini": "Opera/9.80 (iPhone; Opera Mini/5.0.0176/764; U; en) Presto/2.4.15",
         "opera_mobile": "Opera/12.02 (Android 4.1; Linux; Opera Mobi/ADR-1111101157; U; en-US) Presto/2.9.201 Version/12.02",
+        "opera_mobile_tablet": "Opera/9.80 (Android 3.2.1; Linux; Opera Tablet/ADR-1111101157; U; en) Presto/2.9.201 Version/11.50",
 
         "destop_chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
         "desktop_firefox": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0",
@@ -90,6 +91,11 @@ require(["apontador/browser/detector"], function (Detector) {
 
         it("should not detect a Windows Tablet as a mobile", function () {
             var detector = new Detector(ua.windows_tablet);
+            expect(detector.isMobile()).toBeFalsy();
+        });
+
+        it("should not detect an Opera Tablet browser as mobile", function () {
+            var detector = new Detector(ua.opera_mobile_tablet);
             expect(detector.isMobile()).toBeFalsy();
         });
 
