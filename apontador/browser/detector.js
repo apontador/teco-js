@@ -6,8 +6,8 @@ define(function () {
     };
 
     Detector.prototype.isMobile = function () {
-        return ((/mobile/i).test(this.agent) && !(/ipad/i).test(this.agent))
-                || (/blackberry9000/i).test(this.agent);
+        return ((/mobi|mini|blackberry9000/i).test(this.agent)
+            && !(/ipad/i).test(this.agent));
     };
 
     return Detector;

@@ -22,6 +22,10 @@ require(["apontador/browser/detector"], function (Detector) {
         //windows tablet source: http://msdn.microsoft.com/en-us/library/ie/hh920767%28v=vs.85%29.aspx
         "windows_tablet": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Touch)",
 
+        //opera source: http://my.opera.com/community/openweb/idopera/
+        "opera_mini": "Opera/9.80 (iPhone; Opera Mini/5.0.0176/764; U; en) Presto/2.4.15",
+        "opera_mobile": "Opera/12.02 (Android 4.1; Linux; Opera Mobi/ADR-1111101157; U; en-US) Presto/2.9.201 Version/12.02",
+
         "destop_chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
         "desktop_firefox": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0",
         "desktop_ie": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/6.0)",
@@ -58,6 +62,14 @@ require(["apontador/browser/detector"], function (Detector) {
 
         it("should detect a Windows Phone as mobile", function () {
             var detector = new Detector(ua.windows_phone);
+            expect(detector.isMobile()).toBeTruthy();
+        });
+
+        it("should detect an Opera Browser as mobile", function () {
+            var detector = new Detector(ua.opera_mini);
+            expect(detector.isMobile()).toBeTruthy();
+
+            detector = new Detector(ua.opera_mobile);
             expect(detector.isMobile()).toBeTruthy();
         });
 
