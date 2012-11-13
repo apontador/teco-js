@@ -14,6 +14,7 @@ require(["apontador/browser/detector"], function (Detector) {
         //blackberry source: http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/How-to-detect-the-BlackBerry-Browser/ta-p/559862
         "blackberry_webkit": "Mozilla/5.0 (BlackBerry; U; BlackBerry AAAA; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/X.X.X.X Mobile Safari/534.11+",
         "blackberry_9000": "BlackBerry9000/5.0.0.93 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/179",
+        "blackberry_8520": "BlackBerry8520/5.0.0.1036 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/214",
         "blackberry_tablet": "Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.0.0; en-US) AppleWebKit/535.8+ (KHTML, like Gecko) Version/7.2.0.0 Safari/535.8+",
 
         //windows phone source: http://blogs.msdn.com/b/devfish/archive/2011/08/01/explore-the-browser-user-agent-in-windows-phone-mango.aspx
@@ -58,6 +59,9 @@ require(["apontador/browser/detector"], function (Detector) {
             expect(detector.isMobile()).toBeTruthy();
 
             detector = new Detector(ua.blackberry_9000);
+            expect(detector.isMobile()).toBeTruthy();
+
+            detector = new Detector(ua.blackberry_8520);
             expect(detector.isMobile()).toBeTruthy();
         });
 
