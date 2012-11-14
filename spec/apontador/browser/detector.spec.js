@@ -28,6 +28,11 @@ require(["apontador/browser/detector"], function (Detector) {
         "opera_mobile": "Opera/12.02 (Android 4.1; Linux; Opera Mobi/ADR-1111101157; U; en-US) Presto/2.9.201 Version/12.02",
         "opera_mobile_tablet": "Opera/9.80 (Android 3.2.1; Linux; Opera Tablet/ADR-1111101157; U; en) Presto/2.9.201 Version/11.50",
 
+        //symbian source: http://www.developer.nokia.com/Community/Wiki/User-Agent_headers_for_Nokia_devices
+        "symbian_s60": "User-Agent: Mozilla/5.0 (SymbianOS/9.1; U; [en]; Series60/3.0 NokiaE60/4.06.0) AppleWebKit/413 (KHTML, like Gecko) Safari/413",
+        "symbian_93": "Mozilla/5.0 (SymbianOS/9.3; U; Series60/3.2 NokiaE75-1/110.48.125 Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413",
+        "symbian_3": "Mozilla/5.0 (Symbian/3; Series60/5.3 Nokia701/111.020.0307; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.4.1.14 Mobile Safari/533.4 3gpp-gba",
+
         "destop_chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
         "desktop_firefox": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0",
         "desktop_ie": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/6.0)",
@@ -75,6 +80,17 @@ require(["apontador/browser/detector"], function (Detector) {
             expect(detector.isMobile()).toBeTruthy();
 
             detector = new Detector(ua.opera_mobile);
+            expect(detector.isMobile()).toBeTruthy();
+        });
+
+        it("should detect a Symbian OS as a mobile", function () {
+            var detector = new Detector(ua.symbian_s60);
+            expect(detector.isMobile()).toBeTruthy();
+
+            detector = new Detector(ua.symbian_93);
+            expect(detector.isMobile()).toBeTruthy();
+
+            detector = new Detector(ua.symbian_3);
             expect(detector.isMobile()).toBeTruthy();
         });
 
