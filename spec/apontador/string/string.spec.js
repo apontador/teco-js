@@ -12,4 +12,12 @@ require(['apontador/string/string'], function (String) {
             });
         });
     });
+    describe('String dependency', function () {
+        describe('Dependency mask', function () {
+            it('Mask dependecy should be loaded', function () {
+                expect(String.Mask).toBeDefined();
+                expect(typeof(String.Mask)).toBe('object');
+            });
+        });
+    });
 });
