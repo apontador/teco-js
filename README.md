@@ -70,7 +70,7 @@ Compilação:
 
 ```bash
 cd teco-js
-./bin/jam compile --almond -w -i apontador/tracker/gm -o gm.js
+./bin/jam compile --almond -i apontador/tracker/gm -o gm.js
 ```
 
 Uso do arquivo compilado:
