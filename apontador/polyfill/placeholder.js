@@ -1,5 +1,4 @@
-define(
-    function () {
+define(['../browser/event'], function (eventEmitter) {
         'use strict';
 
         var placeholderPolyfill = function () {
@@ -16,19 +15,20 @@ define(
                         elm.value = elm.getAttribute("placeholder");
                     }
 
-                    elm.onclick = function(){
+                    eventEmitter.add('click', elm, function(){
                         if(this.value == this.getAttribute("placeholder")){
                             this.value = '';
                             this.className = this.className.replace('/\bplaceholder\-on\b/','');
                         }
-                    }
+                    });
 
-                    elm.onblur = function(){
-                        if(this.value == ''){
+                    eventEmitter.add('blur', elm, function(){
+                        if(this.value === ''){
                             this.value = this.getAttribute("placeholder");
                             this.className += 'placeholder-on';
                         }
-                    }
+                    });
+
                 }
             }
         };
