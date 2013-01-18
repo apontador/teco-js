@@ -1,59 +1,42 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Jasmine Spec Runner</title>
-  <link rel="shortcut icon" type="image/png" href="../jam/jasmine/jasmine_favicon.png">
-  <link rel="stylesheet" type="text/css" href="../jam/jasmine/jasmine.css">
-  <script type="text/javascript" src="../jam/jasmine/jasmine.js"></script>
-  <script type="text/javascript" src="../jam/jasmine/jasmine-html.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>TecoJS - Tests</title>
+    <link href="../node_modules/mocha/mocha.css" rel="stylesheet" media="screen" />
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/requirejs/require.js"></script>
+    <script type="text/javascript">
 
-  <script type="text/javascript" src="../jam/require.js"></script>
-  <script type="text/javascript">
-      require.config({
-        "baseUrl": "../"
-      })
-  </script>
+        var expect = chai.expect,
+            assert = chai.assert;
 
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="apontador/parser/url.spec.js"></script>
-  <script type="text/javascript" src="apontador/tracker/gm.spec.js"></script>
-  <script type="text/javascript" src="apontador/string/string.spec.js"></script>
-   <script type="text/javascript" src="apontador/string/mask.spec.js"></script>
-  <script type="text/javascript" src="apontador/browser/detector.spec.js"></script>
+        chai.should();
 
-  <!-- include source files here... -->
+        mocha.setup('bdd');
 
-  <script type="text/javascript">
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
+        require.config({
+            baseUrl: "../",
+            //timestamp to avoid cache
+            urlArgs: "v="+(new Date()).getTime()
+        });
 
-      var htmlReporter = new jasmine.HtmlReporter();
+        var specs = [
+            "spec/apontador/parser/url.spec",
+            "spec/apontador/tracker/gm.spec",
+            "spec/apontador/string/string.spec",
+            // "spec/apontador/string/mask.spec",
+            "spec/apontador/browser/detector.spec"
+        ];
 
-      jasmineEnv.addReporter(htmlReporter);
+        require(specs,function(){
+            setTimeout(mocha.run,100);
+        });
 
-      jasmineEnv.specFilter = function(spec) {
-        return htmlReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
-
-</head>
-<body>
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+  </body>
 </html>

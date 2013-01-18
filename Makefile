@@ -7,7 +7,3 @@ help:
 
 install:
 	@npm install
-	@./bin/jam install
-
-test:
-	@./node_modules/.bin/jasmine-dom --runner spec/SpecRunner.html

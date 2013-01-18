@@ -8,13 +8,13 @@ require(['apontador/parser/url'], function (urlParser) {
             poi = urlParser.poi(pathname);
 
             it("should get poi state", function () {
-                expect(poi.state).toBe('pr');
+                expect(poi.state).to.eql('pr');
             });
             it("should get poi city", function () {
-                expect(poi.city).toBe('campo largo');
+                expect(poi.city).to.eql('campo largo');
             });
             it("should get poi name", function () {
-                expect(poi.name).toBe('concessionaria gm spack oa');
+                expect(poi.name).to.eql('concessionaria gm spack oa');
             });
         });
         describe("with an invalid url",  function () {
@@ -23,13 +23,13 @@ require(['apontador/parser/url'], function (urlParser) {
             poi = urlParser.poi(pathname);
 
             it("should get empty poi state", function () {
-                expect(poi.state).toBe('');
+                expect(poi.state).to.eql('');
             });
             it("should get empty poi city", function () {
-                expect(poi.city).toBe('');
+                expect(poi.city).to.eql('');
             });
             it("should get empty poi name", function () {
-                expect(poi.name).toBe('');
+                expect(poi.name).to.eql('');
             });
         });
     });

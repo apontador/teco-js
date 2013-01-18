@@ -42,95 +42,95 @@ require(["apontador/browser/detector"], function (Detector) {
     describe("Browser Detector", function () {
         it("should fill the agent with the navigator's user agent when not given", function () {
             var detector = new Detector();
-            expect(detector.agent).toEqual(navigator.userAgent);
+            detector.agent.should.equal(navigator.userAgent);
         });
         it("should detect an iPhone as mobile", function () {
             var detector = new Detector(ua.ios_phone);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect an iPod as mobile", function () {
             var detector = new Detector(ua.ios_player);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect an Android Smartphone as mobile", function () {
             var detector = new Detector(ua.android_phone);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect a BlackBerry as mobile", function () {
             var detector = new Detector(ua.blackberry_webkit);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
 
             detector = new Detector(ua.blackberry_9000);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
 
             detector = new Detector(ua.blackberry_8520);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect a Windows Phone as mobile", function () {
             var detector = new Detector(ua.windows_phone);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect an Opera Browser as mobile", function () {
             var detector = new Detector(ua.opera_mini);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
 
             detector = new Detector(ua.opera_mobile);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should detect a Symbian OS as a mobile", function () {
             var detector = new Detector(ua.symbian_s60);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
 
             detector = new Detector(ua.symbian_93);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
 
             detector = new Detector(ua.symbian_3);
-            expect(detector.isMobile()).toBeTruthy();
+            detector.isMobile().should.be.ok;
         });
 
         it("should not detect an iPad as a mobile", function () {
             var detector = new Detector(ua.ios_tablet);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
 
         it("should not detect an Android Tablet as a mobile", function () {
             var detector = new Detector(ua.android_tablet);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
 
         it("should not detect a BlackBerry Playbook as a mobile", function () {
             var detector = new Detector(ua.blackberry_tablet);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
 
         it("should not detect a Windows Tablet as a mobile", function () {
             var detector = new Detector(ua.windows_tablet);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
 
         it("should not detect an Opera Tablet browser as mobile", function () {
             var detector = new Detector(ua.opera_mobile_tablet);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
 
         it("should not detect a Desktop as a mobile", function () {
             var detector = new Detector(ua.desktop_firefox);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
 
             detector = new Detector(ua.desktop_ie);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
 
             detector = new Detector(ua.desktop_chrome);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
 
             detector = new Detector(ua.desktop_safari);
-            expect(detector.isMobile()).toBeFalsy();
+            detector.isMobile().should.not.be.ok;
         });
     });
 });
