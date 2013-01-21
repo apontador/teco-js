@@ -8,10 +8,10 @@ require(['apontador/polyfill/placeholder'], function(placeholderPolyfill) {
             placeholderPolyfill();
 
             var input = document.getElementById('inputTest'),
-                inoutPlaceholder = input.getAttribute('placeholder'),
+                inputPlaceholder = input.getAttribute('placeholder'),
                 inputValue = input.value;
 
-            expect(inoutPlaceholder).to.eql(inputValue);
+            expect(inputPlaceholder).to.eql(inputValue);
         });
 
     });
