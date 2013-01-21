@@ -16,16 +16,16 @@ define(['../browser/event'], function (eventEmitter) {
                     }
 
                     eventEmitter.add('click', elm, function(){
-                        if(this.value == this.getAttribute("placeholder")){
-                            this.value = '';
-                            this.className = this.className.replace('/\bplaceholder\-on\b/','');
+                        if(elm.value === elm.getAttribute("placeholder")){
+                            elm.value = '';
+                            elm.className = elm.className.replace('/\bplaceholder\-on\b/','');
                         }
                     });
 
                     eventEmitter.add('blur', elm, function(){
-                        if(this.value === ''){
-                            this.value = this.getAttribute("placeholder");
-                            this.className += 'placeholder-on';
+                        if(elm.value === ''){
+                            elm.value = elm.getAttribute("placeholder");
+                            elm.className += 'placeholder-on';
                         }
                     });
 
