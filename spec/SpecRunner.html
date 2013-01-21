@@ -6,6 +6,8 @@
     <link href="../node_modules/mocha/mocha.css" rel="stylesheet" media="screen" />
     <script src="../node_modules/mocha/mocha.js"></script>
     <script src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/sinon/lib/sinon.js"></script>
+    <script src="../node_modules/sinon/lib/sinon/spy.js"></script>
     <script src="../node_modules/requirejs/require.js"></script>
     <script type="text/javascript">
 
@@ -26,8 +28,10 @@
             "spec/apontador/parser/url.spec",
             "spec/apontador/tracker/gm.spec",
             "spec/apontador/string/string.spec",
-            // "spec/apontador/string/mask.spec",
-            "spec/apontador/browser/detector.spec"
+            "spec/apontador/string/mask.spec",
+            "spec/apontador/polyfill/placeholder.spec",
+            "spec/apontador/browser/detector.spec",
+            "spec/apontador/browser/event.spec"
         ];
 
         require(specs,function(){

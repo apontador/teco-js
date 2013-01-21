@@ -4,14 +4,14 @@ require(['apontador/browser/event'], function (eventEmitter) {
 
         var input = document.createElement('input'),
             evtType = 'change',
-            callback = jasmine.createSpy();
+            callback = sinon.spy();
 
         it("should run an event with callback", function () {
 
             eventEmitter.add(evtType, input, callback);
             eventEmitter.emit(evtType, input);
 
-            expect(callback).toHaveBeenCalled();
+            expect(callback.callCount).to.eql(1);
 
         });
 
