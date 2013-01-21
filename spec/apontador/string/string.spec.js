@@ -16,7 +16,7 @@ require(['apontador/string/string'], function (String) {
         describe('Dependency mask', function () {
             it('Mask dependecy should be loaded', function () {
                 expect(String).to.have.property('Mask');
-                expect(String).to.be.an('object');
+                expect(String.Mask).to.be.an('object');
             });
         });
     });
