@@ -4,25 +4,15 @@
     <meta charset="utf-8">
     <title>TecoJS - Tests</title>
     <link href="../node_modules/mocha/mocha.css" rel="stylesheet" media="screen" />
-    <script src="../node_modules/mocha/mocha.js"></script>
-    <script src="../node_modules/chai/chai.js"></script>
-    <script src="../node_modules/sinon/lib/sinon.js"></script>
-    <script src="../node_modules/sinon/lib/sinon/spy.js"></script>
     <script src="../node_modules/requirejs/require.js"></script>
+    <script src="../node_modules/sinon/lib/sinon.js"></script>
     <script type="text/javascript">
 
-        var expect = chai.expect,
-            assert = chai.assert;
-
-        chai.should();
-
-        mocha.setup('bdd');
-
-        require.config({
-            baseUrl: "../",
-            //timestamp to avoid cache
-            urlArgs: "v="+(new Date()).getTime()
-        });
+        var node_modules = [
+            "../node_modules/expect.js/expect",
+            "../node_modules/mocha/mocha",
+            "../node_modules/sinon/lib/sinon/spy"
+        ];
 
         var specs = [
             "spec/apontador/parser/url.spec",
@@ -34,13 +24,28 @@
             "spec/apontador/browser/event.spec"
         ];
 
-        require(specs,function(){
-            setTimeout(mocha.run,100);
+        var expect, assert;
+
+        require.config({
+            baseUrl: "../",
+            //timestamp to avoid cache
+            urlArgs: "v="+(new Date()).getTime()
         });
+
+        require( node_modules, function () {
+
+            mocha.setup('bdd');
+
+            require( specs, function (){
+                setTimeout(mocha.run,100);
+            });
+        });
+
 
     </script>
   </head>
   <body>
     <div id="mocha"></div>
+    <input id="inputTest" placeholder="I am placeholder" type="text" style="display:none" />
   </body>
 </html>

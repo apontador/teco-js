@@ -4,10 +4,14 @@ require(['apontador/polyfill/placeholder'], function(placeholderPolyfill) {
     describe('Placeholder polyfill', function () {
 
         it('should support when input attribute placeholder exists', function () {
-            var input = document.createElement('input');
 
             placeholderPolyfill();
-            input.should.have.property('placeholder');
+
+            var input = document.getElementById('inputTest'),
+                inoutPlaceholder = input.getAttribute('placeholder'),
+                inputValue = input.value;
+
+            expect(inoutPlaceholder).to.eql(inputValue);
         });
 
     });

@@ -5,7 +5,7 @@
   "dependencies": {
     "mocha": "~1.8.1",
     "requirejs": "~2.1.2",
-    "chai": "~1.4.2",
-    "sinon": "~1.5.2"
+    "sinon": "~1.5.2",
+    "expect.js": "~0.2.0"
   }
 }

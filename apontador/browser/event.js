@@ -6,7 +6,7 @@ define(
                 emit: function(type, element) {
 
                     var e = null;
-                    if (doc.createEventObject) {
+                    if (doc.createEventObject && !doc.createEvent) {
                         e = doc.createEventObject();
                         element.fireEvent('on' + type, e);
                     } else {
@@ -18,7 +18,7 @@ define(
                 },
                 add: function(type, element, callback) {
 
-                    if (doc.attachEvent) {
+                    if (doc.attachEvent && !('addEventListener' in element) ) {
                         element.attachEvent('on' + type, callback);
                     } else {
                         element.addEventListener(type, callback, false);
