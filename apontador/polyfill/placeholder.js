@@ -3,6 +3,7 @@ define(['../browser/event'], function (eventEmitter) {
 
         var placeholderPolyfill = function () {
             var inputs = document.getElementsByTagName('input'),
+                clsPrefix = ' placeholder-on',
                 elm;
 
             for (var i=0, count = inputs.length; i<count; i++) {
@@ -11,22 +12,34 @@ define(['../browser/event'], function (eventEmitter) {
                 if ( elm.getAttribute('placeholder') ) {
 
                     if(elm.value === '') {
-                        elm.className += 'placeholder-on';
+                        elm.className += clsPrefix;
                         elm.value = elm.getAttribute("placeholder");
                     }
 
-                    eventEmitter.add('click', elm, function(){
-                        if(elm.value === elm.getAttribute("placeholder")){
-                            elm.value = '';
-                            elm.className = elm.className.replace('/\bplaceholder\-on\b/','');
+                    eventEmitter.add('click', elm, function (e) {
+
+                        //ie8 and ie7 doesn't support this
+                        var current = e.target;
+
+                        if (current.value === current.getAttribute('placeholder')) {
+                            current.value = '';
+                            current.className = current.className.replace('placeholder-on','');
                         }
+
                     });
 
-                    eventEmitter.add('blur', elm, function(){
-                        if(elm.value === ''){
-                            elm.value = elm.getAttribute("placeholder");
-                            elm.className += ' placeholder-on';
+                    eventEmitter.add('blur', elm, function (e) {
+
+                        var current = e.target;
+
+                        if (current.value === '') {
+                            current.value = current.getAttribute("placeholder");
+
+                            if (!current.className.match('placeholder')) {
+                                current.className += clsPrefix;
+                            }
                         }
+
                     });
 
                 }

@@ -19,7 +19,11 @@ define(
                 add: function(type, element, callback) {
 
                     if (doc.attachEvent && !('addEventListener' in element) ) {
-                        element.attachEvent('on' + type, callback);
+                        element.attachEvent('on' + type, function(){
+                            callback({
+                                target:element
+                            });
+                        });
                     } else {
                         element.addEventListener(type, callback, false);
                     }

@@ -36,13 +36,20 @@ require(['apontador/polyfill/placeholder','apontador/browser/event'], function(p
             expect(input.value).to.eql(input.getAttribute('placeholder'));
         });
 
-        it('should not remove css old classes', function () {
+
+        it('should remove placeholder css class when a input is selected', function () {
 
             eventEmitter.emit('click',input);
-            input.className = "first";
+
+            expect(input.className).to.not.contain('placeholder-on');
+        });
+
+        it('should not remove css old classes', function () {
+
             eventEmitter.emit('blur',input);
 
-            expect(input.className).to.eql('first placeholder-on');
+            expect(input.className).to.contain('placeholder-on');
+            expect(input.className).to.contain('default');
         });
 
 
