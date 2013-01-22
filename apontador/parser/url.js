@@ -1,4 +1,4 @@
-define(
+define(['../string/trim'],
     function () {
         'use strict';
         var poi, isPoiPathname;
