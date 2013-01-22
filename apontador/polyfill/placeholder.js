@@ -25,7 +25,7 @@ define(['../browser/event'], function (eventEmitter) {
                     eventEmitter.add('blur', elm, function(){
                         if(elm.value === ''){
                             elm.value = elm.getAttribute("placeholder");
-                            elm.className += 'placeholder-on';
+                            elm.className += ' placeholder-on';
                         }
                     });
 
