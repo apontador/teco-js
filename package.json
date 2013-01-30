@@ -6,12 +6,6 @@
     "mocha": "~1.8.1",
     "requirejs": "~2.1.2",
     "sinon": "~1.5.2",
-    "expect.js": "~0.2.0",
-    "jamjs": "~0.2.13"
-  },
-  "jam": {
-    "dependencies": {
-        "bootstrap": "*"
-    }
+    "expect.js": "~0.2.0"
   }
 }
