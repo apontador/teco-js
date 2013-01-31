@@ -25,6 +25,13 @@ require(
                 set = localRetarget.getCriteria();
                 expect(set.foo).to.eql(1);
             });
+
+            it("should not break trying to parse a malformatted JSON", function () {
+                var set;
+                document.cookie = "critGA=malformatted";
+                set = localRetarget.getCriteria();
+                expect(set).to.eql({});
+            });
         });
     }
 );

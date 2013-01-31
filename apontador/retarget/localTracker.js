@@ -7,7 +7,11 @@ define(['jquery.cookie'], function () {
 
     return {
         'getCriteria': function () {
-            return JSON.parse($.cookie(COOKIE_ID));
+            try {
+                return JSON.parse($.cookie(COOKIE_ID));
+            } catch(e) {
+                return {};
+            }
         }
     };
 });
