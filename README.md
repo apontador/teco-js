@@ -8,10 +8,10 @@ Dependências
 
 * [Node.js & NPM](http://nodejs.org/download/)
 
-Instalação
-----------
+Instalação (dev)
+----------------
 
-Em seu terminal, execute*:
+Em seu terminal, execute:
 
 ```bash
 git clone https://github.com/apontador/teco-js.git
@@ -19,26 +19,26 @@ cd teco-js
 make install
 ```
 
-\* O comando para instalar as dependências do [jam](http://jamjs.org) ainda é temporário, mas funciona :).
-
 Uso
 ---
 
-### Inclusão e versionamento
+Para começar a utilizar *teco* em seu projeto, só são necessários três passos:
 
-Simplesmente inclua o **teco.js** no seu projeto como um submódulo do git -- o git se encarregará do versionamento. Ex:
+### 1. Importar
 
-```bash
-git submodule add https://github.com/apontador/teco-js.git
-cd teco-js
-make install
+A forma mais fácil de importar o *teco* e manter o controle da versão é através dos submódulos do git. Para isso, execute:
+
+```
+git submodule add git@github.com:apontador/teco-js.git teco-js
 ```
 
-### Carregamento dos módulos
+### 2. Definir biblioteca AMD
 
-#### Assíncrono
+O teco.js é desenvolvido de forma modular utilizando [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD). Sendo assim, se faz necessário incluir no seu projeto uma biblioteca para carregar estes módulos. Existem [várias opções disponíveis](http://requirejs.org/docs/whyamd.html#youcando), sendo [require.js](http://requirejs.org/) a mais popular.
 
-Para se beneficiar do carregamento assíncrono dos módulos, simplesmente inclua o script do [require.js](http://requirejs.org) em seu código e configure o path para o teco-js. Assim os módulos serão carregados apenas quando necessários. Ex:
+### 3. Carregar os módulos
+
+Se você escolheu uma biblioteca de carregamento assíncrono, como *require.js*, pode servir os módulos do teco.js diretamente a partir do diretório de arquivos estáticos do seu projeto. Ex:
 
 ```html
 <!DOCTYPE HTML>
@@ -46,8 +46,8 @@ Para se beneficiar do carregamento assíncrono dos módulos, simplesmente inclua
 <head>
     <meta charset="UTF-8">
 
-    <!-- carrega o require.js presente no teco -->
-    <script type="text/javascript" src="teco-js/jam/require.js"></script>
+    <!-- carrega o require.js -->
+    <script type="text/javascript" src="require.js"></script>
     <script type="text/javascript">
         require.config({
             "baseUrl": "teco-js" // define o caminho relativo para o teco
@@ -62,18 +62,13 @@ Para se beneficiar do carregamento assíncrono dos módulos, simplesmente inclua
 </html>
 ```
 
-#### Compilação
-
-Se você preferir incluir de uma vez todos os arquivos necssários para carregar o módulo, você pode compilá-lo antes. Ou seja, o jam.js irá minificar e agrupar todas as dependências em um arquivo. O uso, porém, continua o mesmo. Ex:
-
-Compilação:
+Caso você tenha optado por uma biblioteca como *almond* para o carregamento de uma versão já compilada você precisará otimizar o projeto usando r.js. Ex:
 
 ```bash
-cd teco-js
-./bin/jam compile --almond -i apontador/tracker/gm -o gm.js
+make build
 ```
 
-Uso do arquivo compilado:
+**obs:** copie o conteúdo da pasta [examples](examples) para seu projeto e altere de acordo com suas necessidades para usar este comando no seu projeto
 
 ```html
 <!DOCTYPE HTML>
@@ -81,8 +76,10 @@ Uso do arquivo compilado:
 <head>
     <meta charset="UTF-8">
 
+    <script type="text/javascript" src="almond.js"></script>
+
     <!-- carrega o arquivo compilado -->
-    <script type="text/javascript" src="gm.js"></script>
+    <script type="text/javascript" src="teco.js"></script>
     <script type="text/javascript">
         require(["apontador/tracker/gm"], function(gmTraker) { // apenas importa o módulo,
                                                                // visto que ele já foi carregado
