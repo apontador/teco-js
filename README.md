@@ -68,7 +68,7 @@ Caso você tenha optado por uma biblioteca como *almond* para o carregamento de 
 make build
 ```
 
-**obs:** copie o conteúdo da pasta [examples](examples) para seu projeto e altere de acordo com suas necessidades para usar este comando no seu projeto
+**obs:** copie o conteúdo da pasta [examples](examples) para seu projeto e altere de acordo com suas necessidades.
 
 ```html
 <!DOCTYPE HTML>
