@@ -27,7 +27,7 @@ define(
             // ensure an object without hash
             if ( findHash.length > 1 ) {
                 url = findHash[0];
-                QueryObject.hash = findHash[1];
+                this.hash = findHash[1];
             };
 
             if (re.test(url)) {
@@ -41,7 +41,7 @@ define(
 
                     queryObject[key] = value;
                 }
-                QueryObject.query = queryObject;
+                this.query = queryObject;
             }
         };
 
