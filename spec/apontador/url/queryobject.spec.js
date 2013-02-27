@@ -2,7 +2,7 @@
 require(['apontador/url/queryobject'], function (QueryObject) {
     'use strict';
     describe("Url QueryObject",  function () {
-        var url = "http://site.com/level?_param1=similar&param1=value1&param2=value2",
+        var url = "http://site.com/level?_param1=similar&param1=value1&param2=value2#hash",
             queryObject = new QueryObject(url);
 
         it("should can get a parameter from URL", function () {
@@ -18,13 +18,27 @@ require(['apontador/url/queryobject'], function (QueryObject) {
         });
         it("should not mismatch similar parameters", function () {
             expect(queryObject.get("param1")).to.not.be(queryObject.get("_param1"));
-            queryObject.set("param1", "notsimilar");
-            expect(queryObject.get("_param1")).to.not.be("notsimilar");
+            queryObject.set("param1", "foobar");
+            expect(queryObject.get("_param1")).to.not.be("foobar");
+        });
+        it("should not mismatch similar parameters", function () {
+            expect(queryObject.get("param1")).to.not.be(queryObject.get("_param1"));
+            queryObject.set("param1", "foobar");
+            expect(queryObject.get("_param1")).to.not.be("foobar");
+        });
+        it("should get an entire hash", function () {
+            expect(queryObject.getHash()).to.eql('hash');
+        });
+        it("should set an entire hash", function () {
+            expect(queryObject.getHash()).to.eql('hash');
+            queryObject.setHash('harlemshake');
+            expect(queryObject.getHash()).to.eql('harlemshake');
         });
         it("should can get a new query string after change a parameter from URL", function () {
             queryObject.set("param1", "newValue1");
+            queryObject.setHash('hash');
             expect(queryObject.toString()).to.eql(
-                '?_param1=similar&param1=newValue1&param2=value2'
+                '?_param1=similar&param1=newValue1&param2=value2#hash'
             );
         });
     });

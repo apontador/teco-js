@@ -10,15 +10,23 @@ define(
         };
 
         QueryObject.parse = function (url) {
+
             // http://rubular.com/r/8zBTxrpRwo
             var re = /(\w+)=([\S]+)/,
                 urlParts = [],
                 params = [],
                 query = "",
                 index = 0,
-                chave = "",
-                valor = "",
-                queryObject = {};
+                key = "",
+                value = "",
+                queryObject = {},
+                findHash = url.split('#');
+
+            // ensure an object without hash
+            if ( findHash.length > 1 ) {
+                url = findHash[0];
+                QueryObject.hash = findHash[1];
+            };
 
             if (re.test(url)) {
                 urlParts = url.match(re);
@@ -26,14 +34,16 @@ define(
                 params = query.split("&");
 
                 for (index = 0; index < params.length; index++) {
-                    chave = params[index].match(re)[1];
-                    valor = params[index].match(re)[2];
+                    key = params[index].match(re)[1];
+                    value = params[index].match(re)[2];
 
-                    queryObject[chave] = valor;
+                    queryObject[key] = value;
                 }
                 QueryObject.query = queryObject;
             }
         };
+
+        QueryObject.hash = '';
 
         QueryObject.prototype.get = function (name) {
             return QueryObject.query[name];
@@ -41,6 +51,14 @@ define(
 
         QueryObject.prototype.set = function (name, value) {
             QueryObject.query[name] = value;
+        };
+
+        QueryObject.prototype.getHash = function () {
+            return QueryObject.hash;
+        };
+
+        QueryObject.prototype.setHash = function (value) {
+            QueryObject.hash = value;
         };
 
         QueryObject.prototype.toString = function () {
@@ -51,6 +69,11 @@ define(
                     str += p + '=' + QueryObject.query[p];
                 }
             }
+
+            if (QueryObject.hash !== '') {
+                str += '#' + QueryObject.hash;
+            }
+
             return str;
         };
 
