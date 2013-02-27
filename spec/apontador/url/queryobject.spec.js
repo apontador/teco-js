@@ -21,11 +21,6 @@ require(['apontador/url/queryobject'], function (QueryObject) {
             queryObject.set("param1", "foobar");
             expect(queryObject.get("_param1")).to.not.be("foobar");
         });
-        it("should not mismatch similar parameters", function () {
-            expect(queryObject.get("param1")).to.not.be(queryObject.get("_param1"));
-            queryObject.set("param1", "foobar");
-            expect(queryObject.get("_param1")).to.not.be("foobar");
-        });
         it("should get an entire hash", function () {
             expect(queryObject.getHash()).to.eql('hash');
         });
@@ -39,6 +34,15 @@ require(['apontador/url/queryobject'], function (QueryObject) {
             queryObject.setHash('hash');
             expect(queryObject.toString()).to.eql(
                 '?_param1=similar&param1=newValue1&param2=value2#hash'
+            );
+        });
+        it("should run without hash", function () {
+            queryObject = new QueryObject("?q=jumanji&t=related");
+
+            queryObject.set('q', 'foobar');
+            expect(queryObject.get('q')).to.eql('foobar');
+            expect(queryObject.toString()).to.eql(
+                '?q=foobar&t=related'
             );
         });
     });

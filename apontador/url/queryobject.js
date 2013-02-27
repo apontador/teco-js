@@ -22,6 +22,8 @@ define(
                 queryObject = {},
                 findHash = url.split('#');
 
+            this.hash = '';
+
             // ensure an object without hash
             if ( findHash.length > 1 ) {
                 url = findHash[0];
@@ -42,8 +44,6 @@ define(
                 QueryObject.query = queryObject;
             }
         };
-
-        QueryObject.hash = '';
 
         QueryObject.prototype.get = function (name) {
             return QueryObject.query[name];
