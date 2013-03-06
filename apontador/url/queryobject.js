@@ -15,6 +15,7 @@ define(
             var re = /(\w+)=([\S]+)/,
                 urlParts = [],
                 params = [],
+                paramsIndex = '',
                 query = "",
                 index = 0,
                 key = "",
@@ -37,10 +38,15 @@ define(
                 params = query.split("&");
 
                 for (index = 0; index < params.length; index++) {
-                    key = params[index].match(re)[1];
-                    value = params[index].match(re)[2];
 
-                    queryObject[key] = value;
+                    paramsIndex = params[index].match(re) || [];
+
+                    if (paramsIndex.length) {
+                        key = paramsIndex[1];
+                        value = paramsIndex[2];
+
+                        queryObject[key] = value;
+                    }
                 }
             }
 
