@@ -1,8 +1,8 @@
 /*global describe, it, expect, beforeEach, before */
-require(['apontador/url/queryobject'], function (QueryObject) {
+require(['apontador/parser/querystring'], function (QueryObject) {
     'use strict';
 
-    describe("Url QueryObject",  function () {
+    describe("Url QueryString parser",  function () {
 
         describe('with previous params', function() {
             var url, queryObject;
