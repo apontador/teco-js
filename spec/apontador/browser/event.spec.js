@@ -6,7 +6,7 @@ require(['apontador/browser/event'], function (eventEmitter) {
             evtType = 'change',
             callback = sinon.spy();
 
-        before(function(){
+        before(function () {
             eventEmitter.add(evtType, input, callback);
             eventEmitter.emit(evtType, input);
         });

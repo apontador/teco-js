@@ -6,8 +6,7 @@ define(function () {
     };
 
     Detector.prototype.isMobile = function () {
-        return ((/mobi|mini|blackberry(\d+)|symbian/i).test(this.agent)
-            && !(/ipad/i).test(this.agent));
+        return ((/mobi|mini|blackberry(\d+)|symbian/i).test(this.agent) && !(/ipad/i).test(this.agent));
     };
 
     return Detector;

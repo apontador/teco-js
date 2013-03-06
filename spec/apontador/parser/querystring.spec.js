@@ -1,13 +1,13 @@
-/*global describe, it, expect, beforeEach, before */
+/*global describe, it, expect, before */
 require(['apontador/parser/querystring'], function (QueryObject) {
     'use strict';
 
     describe("Url QueryString parser",  function () {
 
-        describe('with previous params', function() {
+        describe('with previous params', function () {
             var url, queryObject;
 
-            before(function(){
+            before(function () {
                 url = "http://site.com/level?_param1=similar&param1=value1&param2=value2",
                 queryObject = new QueryObject(url);
             });
@@ -41,10 +41,10 @@ require(['apontador/parser/querystring'], function (QueryObject) {
 
         });
 
-        describe('with previous params and some empty params', function() {
+        describe('with previous params and some empty params', function () {
             var url, queryObject;
 
-            before(function(){
+            before(function () {
                 url = "http://site.com/level?_param1=&param1=value1&param2=value2",
                 queryObject = new QueryObject(url);
             });
@@ -78,10 +78,10 @@ require(['apontador/parser/querystring'], function (QueryObject) {
 
         });
 
-        describe('with hash', function() {
+        describe('with hash', function () {
             var url, queryObject;
 
-            before(function(){
+            before(function () {
                 url = "http://site.com/level?_param1=similar&param1=value1#hash",
                 queryObject = new QueryObject(url);
             });
@@ -105,14 +105,14 @@ require(['apontador/parser/querystring'], function (QueryObject) {
             });
         });
 
-        describe('run with a single url without param', function() {
+        describe('run with a single url without param', function () {
             var url = [], queryObject = [];
 
-            before(function() {
+            before(function () {
                 url[0] = "http://site.com",
                 url[1] = "http://site.com/";
 
-                for( var i = 0; i < url.length; i++ ) {
+                for (var i = 0; i < url.length; i++) {
                     queryObject[i] = new QueryObject(url[i]);
                 }
             });

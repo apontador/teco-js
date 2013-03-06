@@ -1,11 +1,11 @@
-require(['apontador/polyfill/placeholder','apontador/browser/event'], function(placeholderPolyfill, eventEmitter) {
+require(['apontador/polyfill/placeholder', 'apontador/browser/event'], function (placeholderPolyfill, eventEmitter) {
     'use strict';
 
     describe('Placeholder polyfill', function () {
 
         var input;
 
-        before(function(){
+        before(function () {
             input = document.getElementById('inputTest');
             placeholderPolyfill();
         });
@@ -18,9 +18,9 @@ require(['apontador/polyfill/placeholder','apontador/browser/event'], function(p
         it('should not put placeholder when the input is filled', function () {
             var expected = 'foobar';
 
-            eventEmitter.emit('focus',input);
+            eventEmitter.emit('focus', input);
             input.value = expected;
-            eventEmitter.emit('blur',input);
+            eventEmitter.emit('blur', input);
 
             expect(input.value).not.to.equal(input.attributes.placeholder.value);
             expect(input.value).to.eql(expected);
@@ -28,9 +28,9 @@ require(['apontador/polyfill/placeholder','apontador/browser/event'], function(p
 
         it('should insert placeholder when input value is empty', function () {
 
-            eventEmitter.emit('focus',input);
+            eventEmitter.emit('focus', input);
             input.value = '';
-            eventEmitter.emit('blur',input);
+            eventEmitter.emit('blur', input);
 
             expect(input.value).to.not.be.empty();
             expect(input.value).to.eql(input.attributes.placeholder.value);
@@ -39,14 +39,14 @@ require(['apontador/polyfill/placeholder','apontador/browser/event'], function(p
 
         it('should remove placeholder css class when a input is selected', function () {
 
-            eventEmitter.emit('focus',input);
+            eventEmitter.emit('focus', input);
 
             expect(input.className).to.not.contain('placeholder-on');
         });
 
         it('should not remove css old classes', function () {
 
-            eventEmitter.emit('blur',input);
+            eventEmitter.emit('blur', input);
 
             expect(input.className).to.contain('placeholder-on');
             expect(input.className).to.contain('default');

@@ -1,4 +1,4 @@
-/*global describe:true, it:true, expect:true, beforeEach:true*/
+/*global describe:true, it:true, expect:true*/
 require(['apontador/string/mask'], function (phoneMask) {
     'use strict';
     describe("Define phone mask",  function () {

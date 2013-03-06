@@ -1,9 +1,9 @@
 define(
-    function(){
-        return (function(doc){
+    function () {
+        return (function (doc) {
 
             return {
-                emit: function(type, element) {
+                emit: function (type, element) {
 
                     var e = null;
                     if (doc.createEventObject && !doc.createEvent) {
@@ -11,17 +11,17 @@ define(
                         element.fireEvent('on' + type, e);
                     } else {
                         e = doc.createEvent('HTMLEvents');
-                        e.initEvent( type, true, true);
+                        e.initEvent(type, true, true);
                         element.dispatchEvent(e);
                     }
 
                 },
-                add: function(type, element, callback) {
+                add: function (type, element, callback) {
 
-                    if (doc.attachEvent && !('addEventListener' in element) ) {
-                        element.attachEvent('on' + type, function(){
+                    if (doc.attachEvent && !('addEventListener' in element)) {
+                        element.attachEvent('on' + type, function () {
                             callback({
-                                target:element
+                                target: element
                             });
                         });
                     } else {

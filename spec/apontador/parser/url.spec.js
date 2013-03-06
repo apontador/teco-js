@@ -1,4 +1,4 @@
-/*global describe:true, it:true, expect:true, beforeEach:true*/
+/*global describe:true, it:true, expect:true*/
 require(['apontador/parser/url'], function (urlParser) {
     'use strict';
     describe("Url Parser",  function () {

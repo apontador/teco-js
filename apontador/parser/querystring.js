@@ -2,8 +2,7 @@ define(
     function () {
         'use strict';
 
-        var query = null,
-            QueryObject = null;
+        var QueryObject = null;
 
         QueryObject = function (url) {
             QueryObject.parse(url);
@@ -26,10 +25,10 @@ define(
             this.hash = '';
 
             // ensure an object without hash
-            if ( findHash.length > 1 ) {
+            if (findHash.length > 1) {
                 url = findHash[0];
                 this.hash = findHash[1];
-            };
+            }
 
             if (re.test(url)) {
 

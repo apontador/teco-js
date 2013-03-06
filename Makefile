@@ -9,6 +9,11 @@ help:
 install:
 	npm install
 
+lint:
+	./node_modules/.bin/jshint \
+		apontador/**/* \
+		spec/**/*
+
 test:
 	open spec/SpecRunner.html
 
