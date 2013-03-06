@@ -31,6 +31,7 @@ define(
             };
 
             if (re.test(url)) {
+
                 urlParts = url.match(re);
                 query = urlParts[0];
                 params = query.split("&");
@@ -41,8 +42,9 @@ define(
 
                     queryObject[key] = value;
                 }
-                this.query = queryObject;
             }
+
+            this.query = queryObject;
         };
 
         QueryObject.prototype.get = function (name) {
