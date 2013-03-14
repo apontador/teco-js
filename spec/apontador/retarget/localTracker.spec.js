@@ -1,8 +1,8 @@
-/*global describe, it, expect, afterEach, document, AttributeSet*/
+/*global describe, it, expect, afterEach, document*/
 require(
     ['apontador/retarget/localTracker'],
 
-    function (localRetarget, $) {
+    function (localRetarget) {
         'use strict';
 
         describe("LocalTracker Retarget", function () {
