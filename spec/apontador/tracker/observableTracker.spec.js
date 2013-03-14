@@ -29,6 +29,12 @@ require(
                 );
 
                 expect(stubSubscriber.track.calledOnce).to.be.ok();
+                expect(
+                    stubSubscriber.track.calledWith(
+                        tracker.eventType.view,
+                        'alias'
+                    )
+                ).to.be.ok();
             });
 
         });
