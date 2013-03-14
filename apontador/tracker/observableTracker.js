@@ -15,7 +15,7 @@ define(
 
         return {
             'eventType': {
-                'view': 1
+                'view': 'view'
             },
             'on': function (eventType, target) {
                 var name;
