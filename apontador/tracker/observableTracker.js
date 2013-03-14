@@ -7,9 +7,9 @@ define(
         var $ = jQuery,
             subscribers = [];
 
-        function notify(eventType, eventName) {
+        function notify(eventType, eventName, attributes) {
             subscribers.forEach(function (subscriber) {
-                subscriber.track(eventType, eventName);
+                subscriber.track(eventType, eventName, attributes);
             });
         }
 
@@ -18,12 +18,15 @@ define(
                 'view': 'view'
             },
             'on': function (eventType, target) {
-                var name;
+                var name,
+                    $target;
+
                 for (name in target) {
                     if (target.hasOwnProperty(name)) {
-                        if ($(target[name]).length) {
-                            console.log('found', target[name]);
-                            notify(eventType, name);
+                        $target = $(target[name]);
+
+                        if ($target.length) {
+                            notify(eventType, name, $target.data());
                         }
                     }
                 }
