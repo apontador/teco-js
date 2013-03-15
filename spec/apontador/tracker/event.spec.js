@@ -1,7 +1,7 @@
 /*global require, describe, it, before, after, jQuery, sinon, expect*/
 require(
-    ['apontador/tracker/event', 'apontador/tracker/event/type', 'jquery'],
-    function (event, type) {
+    ['apontador/tracker/event', 'jquery'],
+    function (event) {
         'use strict';
 
         describe('Tracker Event', function () {
@@ -15,7 +15,7 @@ require(
                     {
                         name: 'event name',
                         selector: '.target',
-                        on: [type.view]
+                        on: ['view']
                     }
                 ]);
 
@@ -36,7 +36,7 @@ require(
                 expect(
                     stubSubscriber.getCall(0).args
                 ).to.be.eql([
-                    type.view,
+                    'view',
                     'event name',
                     {
                         'foo': 'bar',
@@ -45,7 +45,7 @@ require(
                 ]);
             });
 
-            it('should throw an exception when an unknow event type is given');
+            it('should throw an exception triyng to start tracking without subscribers');
         });
     }
 );

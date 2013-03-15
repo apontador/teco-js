@@ -1,7 +1,10 @@
 /*global define, jQuery*/
 define(
-    ['apontador/tracker/event/type', 'jquery'],
-    function (eventType) {
+    [
+        'apontador/tracker/event/type/dispatcher',
+        'jquery'
+    ],
+    function (typeDispatcher) {
         'use strict';
 
         var $ = jQuery,
@@ -14,6 +17,14 @@ define(
             });
         }
 
+        function notifyByType(event_types, name, $target) {
+            event_types.forEach(function (event_type) {
+                typeDispatcher.dispatch(event_type, $target, function () {
+                    notify(event_type, name, $target.data());
+                });
+            });
+        }
+
         return {
             'create': function (data) {
                 events_data = data;
@@ -23,11 +34,9 @@ define(
             },
             'startTracking': function () {
                 events_data.forEach(function (data) {
-                    var $target = $(data.selector);
+                    var $target = jQuery(data.selector);
 
-                    if ($target.length) {
-                        notify(eventType.view, data.name, $target.data());
-                    }
+                    notifyByType(data.on, data.name, $target);
                 });
             }
         };

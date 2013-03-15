@@ -1,3 +1,0 @@
-define({
-    'view': 'view'
-});
