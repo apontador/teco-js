@@ -1,23 +1,20 @@
 /*global define, jQuery*/
 define(
-    ['jquery'],
-    function () {
+    ['apontador/tracker/event/type', 'jquery'],
+    function (types) {
         'use strict';
 
         var $ = jQuery,
             subscribers = [];
 
-        function notify(eventType, eventName, attributes) {
+        function notify(type, name, attributes) {
             subscribers.forEach(function (subscriber) {
-                subscriber.track(eventType, eventName, attributes);
+                subscriber(type, name, attributes);
             });
         }
 
         return {
-            'eventType': {
-                'view': 'view'
-            },
-            'on': function (eventType, target) {
+            'create': function (eventType, target) {
                 var name,
                     $target;
 

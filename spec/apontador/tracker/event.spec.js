@@ -1,22 +1,19 @@
 /*global require, describe, it, before, after, jQuery, sinon, expect*/
 require(
-    ['apontador/tracker/observableTracker', 'jquery'],
-    function (tracker) {
+    ['apontador/tracker/event', 'apontador/tracker/event/type', 'jquery'],
+    function (event, type) {
         'use strict';
 
-        describe('Observable Tracker', function () {
+        describe('Tracker Event', function () {
             var stubSubscriber;
             before(function () {
                 jQuery('body').append('<div class="fooEl" data-foo="bar" data-baz="loren ipsum"></div>');
 
-                stubSubscriber = {
-                    'track': sinon.spy()
-                };
+                stubSubscriber = sinon.spy();
+                event.addSubscriber(stubSubscriber);
 
-                tracker.addSubscriber(stubSubscriber);
-
-                tracker.on(
-                    tracker.eventType.view,
+                event.create(
+                    type.view,
                     {
                         'eventName': '.fooEl'
                     }
@@ -28,14 +25,14 @@ require(
             });
 
             it('should track an element view when found at the page', function () {
-                expect(stubSubscriber.track.calledOnce).to.be.ok();
+                expect(stubSubscriber.calledOnce).to.be.ok();
             });
 
             it('should call subscribers with event type, name and attributes', function () {
                 expect(
-                    stubSubscriber.track.getCall(0).args
+                    stubSubscriber.getCall(0).args
                 ).to.be.eql([
-                    tracker.eventType.view,
+                    type.view,
                     'eventName',
                     {
                         'foo': 'bar',
