@@ -7,21 +7,25 @@ require(
         describe('Tracker Event', function () {
             var stubSubscriber;
             before(function () {
-                jQuery('body').append('<div class="fooEl" data-foo="bar" data-baz="loren ipsum"></div>');
+                jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
 
                 stubSubscriber = sinon.spy();
+
+                event.create([
+                    {
+                        name: 'event name',
+                        selector: '.target',
+                        on: [type.view]
+                    }
+                ]);
+
                 event.addSubscriber(stubSubscriber);
 
-                event.create(
-                    type.view,
-                    {
-                        'eventName': '.fooEl'
-                    }
-                );
+                event.startTracking();
             });
 
             after(function () {
-                jQuery('.fooEl').remove();
+                jQuery('.target').remove();
             });
 
             it('should track an element view when found at the page', function () {
@@ -33,7 +37,7 @@ require(
                     stubSubscriber.getCall(0).args
                 ).to.be.eql([
                     type.view,
-                    'eventName',
+                    'event name',
                     {
                         'foo': 'bar',
                         'baz': 'loren ipsum'

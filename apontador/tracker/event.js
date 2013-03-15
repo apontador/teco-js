@@ -1,11 +1,12 @@
 /*global define, jQuery*/
 define(
     ['apontador/tracker/event/type', 'jquery'],
-    function (types) {
+    function (eventType) {
         'use strict';
 
         var $ = jQuery,
-            subscribers = [];
+            subscribers = [],
+            events_data = [];
 
         function notify(type, name, attributes) {
             subscribers.forEach(function (subscriber) {
@@ -14,22 +15,20 @@ define(
         }
 
         return {
-            'create': function (eventType, target) {
-                var name,
-                    $target;
-
-                for (name in target) {
-                    if (target.hasOwnProperty(name)) {
-                        $target = $(target[name]);
-
-                        if ($target.length) {
-                            notify(eventType, name, $target.data());
-                        }
-                    }
-                }
+            'create': function (data) {
+                events_data = data;
             },
             'addSubscriber': function (subscriber) {
                 subscribers.push(subscriber);
+            },
+            'startTracking': function () {
+                events_data.forEach(function (data) {
+                    var $target = $(data.selector);
+
+                    if ($target.length) {
+                        notify(eventType.view, data.name, $target.data());
+                    }
+                });
             }
         };
     }
