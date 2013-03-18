@@ -11,7 +11,7 @@ define(function () {
                 'phone': 'SEE_PHONE',
                 'site': 'GO_TO_SITE',
                 'email': 'SHARE_EMAIL',
-                'description': 'DESCRIPTION',
+                'toggle_description': 'DESCRIPTION',
                 'facebook_button': 'SHARE_FACEBOOK',
                 'twitter_button': 'SHARE_TWITTER',
                 'thumbs_up': 'THUMBS_UP',
