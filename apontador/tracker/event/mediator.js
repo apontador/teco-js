@@ -32,7 +32,17 @@ define(
             'addSubscriber': function (subscriber) {
                 subscribers.push(subscriber);
             },
+            'clearSubscribers': function () {
+                subscribers = [];
+            },
             'startTracking': function () {
+                console.log(subscribers.length);
+                if (subscribers.length === 0) {
+                    throw new TypeError(
+                        "No subscriber found when tracking started"
+                    );
+                }
+
                 events_data.forEach(function (data) {
                     var $target = jQuery(data.selector);
 
