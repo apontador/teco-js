@@ -25,6 +25,29 @@ define(
             });
         }
 
+        function clearSetup() {
+            subscribers = [];
+            events_data = [];
+        }
+
+        function checkSetup() {
+            if (subscribers.length === 0) {
+                clearSetup();
+
+                throw new TypeError(
+                    "No subscriber found when tracking started"
+                );
+            }
+
+            if (events_data.length === 0) {
+                clearSetup();
+
+                throw new TypeError(
+                    "No event assigned to track"
+                );
+            }
+        }
+
         return {
             'assignEvents': function (data) {
                 events_data = data;
@@ -32,22 +55,16 @@ define(
             'addSubscriber': function (subscriber) {
                 subscribers.push(subscriber);
             },
-            'clearSubscribers': function () {
-                subscribers = [];
-            },
             'startTracking': function () {
-                console.log(subscribers.length);
-                if (subscribers.length === 0) {
-                    throw new TypeError(
-                        "No subscriber found when tracking started"
-                    );
-                }
+                checkSetup();
 
                 events_data.forEach(function (data) {
                     var $target = jQuery(data.selector);
 
                     notifyByType(data.on, data.name, $target);
                 });
+
+                clearSetup();
             }
         };
     }

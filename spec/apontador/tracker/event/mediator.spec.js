@@ -1,4 +1,4 @@
-/*global require, describe, it, before, after, jQuery, sinon, expect*/
+/*global require, describe, it, beforeEach, afterEach, jQuery, sinon, expect*/
 require(
     ['apontador/tracker/event/mediator', 'jquery'],
     function (mediator) {
@@ -6,15 +6,14 @@ require(
 
         describe('Tracker Event Mediator', function () {
             var stubSubscriber;
+
             beforeEach(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
-
                 stubSubscriber = sinon.spy();
             });
 
             afterEach(function () {
                 jQuery('.target').remove();
-                mediator.clearSubscribers();
                 stubSubscriber = null;
             });
 
@@ -78,7 +77,18 @@ require(
                 });
             });
 
-            it('should throw an exception trying to start tracking whithout events');
+            it('should throw an exception trying to start tracking whithout events', function () {
+                mediator.addSubscriber(stubSubscriber);
+
+                expect(function () {
+                    mediator.startTracking();
+                }).to.throwException(function (e) {
+                    expect(e).to.be.a(TypeError);
+                    expect(e.message).to.be.eql(
+                        "No event assigned to track"
+                    );
+                });
+            });
         });
     }
 );
