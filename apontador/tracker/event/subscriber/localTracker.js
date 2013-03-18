@@ -5,7 +5,7 @@ define(function () {
     return function (type, name, attribues) {
         var event_dictionary = {
             'view': {
-                'utility': 'SHOW_UTILITY',
+                'utility': 'SHOW_UTILITY'
             },
             'click': {
                 'phone': 'SEE_PHONE',
