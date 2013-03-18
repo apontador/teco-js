@@ -1,14 +1,10 @@
 /*global define, jQuery*/
 define(
-    [
-        'apontador/tracker/event/type/dispatcher',
-        'jquery'
-    ],
+    ['apontador/tracker/event/type/dispatcher'],
     function (typeDispatcher) {
         'use strict';
 
-        var $ = jQuery,
-            subscribers = [],
+        var subscribers = [],
             events_data = [];
 
         function notify(type, name, attributes) {
