@@ -1,10 +1,10 @@
 /*global require, describe, it, beforeEach, afterEach, jQuery, sinon, expect*/
 require(
-    ['apontador/tracker/event/mediator', 'jquery'],
+    ['apontador/tracker/mediator', 'jquery'],
     function (mediator) {
         'use strict';
 
-        describe('Tracker Event Mediator', function () {
+        describe('Tracker Mediator', function () {
             var stubSubscriber;
 
             beforeEach(function () {
