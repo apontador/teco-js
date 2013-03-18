@@ -23,6 +23,11 @@ define(function () {
             }
         };
 
+        if (!event_dictionary.hasOwnProperty(type)
+                || !event_dictionary[type].hasOwnProperty(name)) {
+            return;
+        }
+
         localTracker.trackEvent(event_dictionary[type][name], poiId);
     };
 });

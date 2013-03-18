@@ -29,6 +29,13 @@ require(
                         'LBSID'
                     ]);
                 });
+
+                it("should handle unknown events", function () {
+                    localTrackerSub('unknown', 'unexistent');
+
+                    expect(window.localTracker.trackEvent.calledOnce)
+                        .to.not.be.ok();
+                });
             }
         );
     }
