@@ -15,6 +15,7 @@ require(
             afterEach(function () {
                 jQuery('.target').remove();
                 stubSubscriber = null;
+                mediator.clear();
             });
 
             it('should track an element view when found at the page', function () {
@@ -36,12 +37,15 @@ require(
                     {
                         name: 'event name',
                         selector: '.target',
-                        on: ['view']
+                        on: ['view', 'click']
                     }
                 ]).toSubscribers([
                     stubSubscriber
                 ]).track();
 
+                jQuery('.target').trigger('click');
+
+                expect(stubSubscriber.callCount).to.eql(2);
                 expect(
                     stubSubscriber.getCall(0).args
                 ).to.be.eql([

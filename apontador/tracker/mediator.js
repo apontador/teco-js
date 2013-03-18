@@ -1,6 +1,6 @@
 /*global define, jQuery*/
 define(
-    ['apontador/tracker/event/type/dispatcher'],
+    ['apontador/tracker/event/type/dispatcher', 'jquery'],
     function (typeDispatcher) {
         'use strict';
 
@@ -21,23 +21,14 @@ define(
             });
         }
 
-        function clearSetup() {
-            subscribers = [];
-            events_data = [];
-        }
-
         function checkSetup() {
             if (subscribers.length === 0) {
-                clearSetup();
-
                 throw new TypeError(
                     "No subscriber found when tracking started"
                 );
             }
 
             if (events_data.length === 0) {
-                clearSetup();
-
                 throw new TypeError(
                     "No event assigned to track"
                 );
@@ -62,9 +53,11 @@ define(
                     notifyByType(data.on, data.name, $target);
                 });
 
-                clearSetup();
-
                 return this;
+            },
+            'clear': function () {
+                subscribers = [];
+                events_data = [];
             }
         };
     }
