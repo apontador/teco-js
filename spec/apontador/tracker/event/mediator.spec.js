@@ -18,33 +18,29 @@ require(
             });
 
             it('should track an element view when found at the page', function () {
-                mediator.assignEvents([
+                mediator.assign([
                     {
                         name: 'event name',
                         selector: '.target',
                         on: ['view']
                     }
-                ]);
-
-                mediator.addSubscriber(stubSubscriber);
-
-                mediator.startTracking();
+                ]).toSubscribers([
+                    stubSubscriber
+                ]).track();
 
                 expect(stubSubscriber.calledOnce).to.be.ok();
             });
 
             it('should call subscribers with event type, name and attributes', function () {
-                mediator.assignEvents([
+                mediator.assign([
                     {
                         name: 'event name',
                         selector: '.target',
                         on: ['view']
                     }
-                ]);
-
-                mediator.addSubscriber(stubSubscriber);
-
-                mediator.startTracking();
+                ]).toSubscribers([
+                    stubSubscriber
+                ]).track();
 
                 expect(
                     stubSubscriber.getCall(0).args
@@ -59,7 +55,7 @@ require(
             });
 
             it('should throw an exception triyng to start tracking without subscribers', function () {
-                mediator.assignEvents([
+                mediator.assign([
                     {
                         name: 'event name',
                         selector: '.target',
@@ -68,7 +64,7 @@ require(
                 ]);
 
                 expect(function () {
-                    mediator.startTracking();
+                    mediator.track();
                 }).to.throwException(function (e) {
                     expect(e).to.be.a(TypeError);
                     expect(e.message).to.eql(
@@ -78,10 +74,10 @@ require(
             });
 
             it('should throw an exception trying to start tracking whithout events', function () {
-                mediator.addSubscriber(stubSubscriber);
+                mediator.toSubscribers([stubSubscriber]);
 
                 expect(function () {
-                    mediator.startTracking();
+                    mediator.track();
                 }).to.throwException(function (e) {
                     expect(e).to.be.a(TypeError);
                     expect(e.message).to.be.eql(

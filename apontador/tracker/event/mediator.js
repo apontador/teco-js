@@ -49,13 +49,15 @@ define(
         }
 
         return {
-            'assignEvents': function (data) {
+            'assign': function (data) {
                 events_data = data;
+                return this;
             },
-            'addSubscriber': function (subscriber) {
-                subscribers.push(subscriber);
+            'toSubscribers': function (subscribers_array) {
+                subscribers = subscribers_array;
+                return this;
             },
-            'startTracking': function () {
+            'track': function () {
                 checkSetup();
 
                 events_data.forEach(function (data) {
@@ -65,6 +67,8 @@ define(
                 });
 
                 clearSetup();
+
+                return this;
             }
         };
     }
