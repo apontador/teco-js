@@ -1,17 +1,17 @@
 /*global require, describe, it, before, after, jQuery, sinon, expect*/
 require(
-    ['apontador/tracker/event', 'jquery'],
-    function (event) {
+    ['apontador/tracker/event/mediator', 'jquery'],
+    function (mediator) {
         'use strict';
 
-        describe('Tracker Event', function () {
+        describe('Tracker Event Mediator', function () {
             var stubSubscriber;
             before(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
 
                 stubSubscriber = sinon.spy();
 
-                event.create([
+                mediator.assignEvents([
                     {
                         name: 'event name',
                         selector: '.target',
@@ -19,9 +19,9 @@ require(
                     }
                 ]);
 
-                event.addSubscriber(stubSubscriber);
+                mediator.addSubscriber(stubSubscriber);
 
-                event.startTracking();
+                mediator.startTracking();
             });
 
             after(function () {
@@ -46,6 +46,7 @@ require(
             });
 
             it('should throw an exception triyng to start tracking without subscribers');
+            it('shoult throw an exception trying to start tracking whithout events');
         });
     }
 );

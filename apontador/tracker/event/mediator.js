@@ -26,7 +26,7 @@ define(
         }
 
         return {
-            'create': function (data) {
+            'assignEvents': function (data) {
                 events_data = data;
             },
             'addSubscriber': function (subscriber) {
