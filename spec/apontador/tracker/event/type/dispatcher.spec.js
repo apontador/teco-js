@@ -40,7 +40,17 @@ require(
                 });
             });
 
-            it('should assign a callback to the click event of a given element');
+            it('should assign a callback to the click event of a given element', function () {
+                var callbackSpy = sinon.spy();
+
+                typeHandler.dispatch('click', $target, callbackSpy);
+
+                expect(callbackSpy.calledOnce).to.not.be.ok();
+
+                $target.trigger('click');
+
+                expect(callbackSpy.calledOnce).to.be.ok();
+            });
         });
     }
 );

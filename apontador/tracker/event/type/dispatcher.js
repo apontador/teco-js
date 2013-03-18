@@ -8,12 +8,13 @@ define(
             handlers;
 
         handlers = {
-            'view': function (selector, callback) {
-                var $target = $(selector);
-
-                if ($target.length) {
+            'view': function ($element, callback) {
+                if ($element.length) {
                     callback();
                 }
+            },
+            'click': function ($element, callback) {
+                $element.on('click', callback);
             }
         };
 
