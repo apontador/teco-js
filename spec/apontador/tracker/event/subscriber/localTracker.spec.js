@@ -21,12 +21,12 @@ require(
                 });
 
                 it("should call the localTracker with the correct event", function () {
-                    localTrackerSub('view', 'utility');
+                    localTrackerSub('click', 'thumbs', {'type': 'up'});
 
-                    expect(window.localTracker.trackEvent.calledOnce).to.be.ok();
+                    expect(window.localTracker.trackEvent.callCount).to.be.ok();
                     expect(window.localTracker.trackEvent.getCall(0).args).to.eql([
-                        'SHOW_UTILITY',
-                        'LBSID'
+                        'thumbs',
+                        'up'
                     ]);
                 });
 
@@ -35,6 +35,30 @@ require(
 
                     expect(window.localTracker.trackEvent.calledOnce)
                         .to.not.be.ok();
+                });
+
+                it("should call two events on localTracker for utilities", function () {
+                    localTrackerSub(
+                        'click',
+                        'utility',
+                        {
+                            partner: 'bdd',
+                            type: 'pass test'
+                        }
+                    );
+
+
+                    expect(window.localTracker.trackEvent.callCount)
+                        .to.equal(2);
+                    expect(window.localTracker.trackEvent.calledWith(
+                        'click_utility_type',
+                        'pass test'
+                    )).to.be.ok();
+                    expect(window.localTracker.trackEvent.calledWith(
+                        'click_utility_partner',
+                        'bdd'
+                    )).to.be.ok();
+
                 });
             }
         );

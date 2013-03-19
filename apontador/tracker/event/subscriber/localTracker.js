@@ -2,32 +2,70 @@
 define(function () {
     'use strict';
 
-    return function (type, name, attribues) {
+    function trackUtility(type, attributes) {
+        localTracker.trackEvent(
+            type + '_utility_type',
+            attributes.type
+        );
+        localTracker.trackEvent(
+            type + '_utility_partner',
+            attributes.partner
+        );
+    }
+
+    function track(type, name, attributes) {
         var event_dictionary = {
-            'view': {
-                'utility': 'SHOW_UTILITY'
+                'click': {
+                    'phone': {
+                        'event': 'see_phone',
+                        'attribute': 'placeId'
+                    },
+                    'site': {
+                        'event': 'go_to_site',
+                        'attribute': 'placeId'
+                    },
+                    'toggle_description': {
+                        'event': 'description',
+                        'attribute': 'placeId'
+                    },
+                    'share': {
+                        'event': 'share',
+                        'attribute': 'type' //email, twitter, facebook
+                    },
+                    'thumbs': {
+                        'event': 'thumbs',
+                        'attribute': 'type' // up, down
+                    },
+                    'photo_upload': {
+                        'event': 'send_photo',
+                        'attribute': 'type'
+                    },
+                    'helpful_review': {
+                        'event': 'helpful_review',
+                        'attribute': 'placeId'
+                    },
+                    'embed_map': {
+                        'event': 'maplink_widget',
+                        'attribute': 'placeId'
+                    },
+                }
             },
-            'click': {
-                'phone': 'SEE_PHONE',
-                'site': 'GO_TO_SITE',
-                'email': 'SHARE_EMAIL',
-                'toggle_description': 'DESCRIPTION',
-                'facebook_button': 'SHARE_FACEBOOK',
-                'twitter_button': 'SHARE_TWITTER',
-                'thumbs_up': 'THUMBS_UP',
-                'thumbs_down': 'THUMBS_DOWN',
-                'photo_upload': 'SEND_PHOTO',
-                'helpful_review': 'HELPFUL_REVIEW',
-                'utility': 'CLICK_UTILITY',
-                'embed_map': 'MAPLINK_WIDGET'
-            }
-        };
+            data;
 
         if (!event_dictionary.hasOwnProperty(type)
                 || !event_dictionary[type].hasOwnProperty(name)) {
             return;
         }
 
-        localTracker.trackEvent(event_dictionary[type][name], poiId);
+        data = event_dictionary[type][name];
+        localTracker.trackEvent(data.event, attributes[data.attribute]);
+    }
+
+    return function (type, name, attributes) {
+        if (name === 'utility') {
+            trackUtility(type, attributes);
+        } else {
+            track(type, name, attributes);
+        }
     };
 });
