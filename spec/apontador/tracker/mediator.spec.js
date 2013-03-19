@@ -89,6 +89,31 @@ require(
                     );
                 });
             });
+
+            it('should accept fixed notification attributes', function () {
+                mediator.assign([
+                    {
+                        'name': 'event name',
+                        'selector': '.target',
+                        'on': ['view'],
+                        'attributes': {extra: "xpto"}
+                    }
+                ]).toSubscribers([
+                    stubSubscriber
+                ]).track();
+
+                expect(
+                    stubSubscriber.getCall(0).args
+                ).to.be.eql([
+                    'view',
+                    'event name',
+                    {
+                        'foo': 'bar',
+                        'baz': 'loren ipsum',
+                        'extra': 'xpto'
+                    }
+                ]);
+            });
         });
     }
 );
