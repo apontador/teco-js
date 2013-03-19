@@ -62,13 +62,14 @@ Se você escolheu uma biblioteca de carregamento assíncrono, como *require.js*,
 </html>
 ```
 
-Caso você tenha optado por uma biblioteca como *almond* para o carregamento de uma versão já compilada você precisará otimizar o projeto usando r.js. Ex:
+Caso você tenha optado por uma biblioteca como *almond* para o carregamento de uma versão já compilada você precisará otimizar seu projeto usando r.js. Ex:
 
 ```bash
-make build
+r.js -o build.js
 ```
 
-**obs:** copie o conteúdo da pasta [examples](examples) para seu projeto e altere de acordo com suas necessidades.
+[Exemplo de build file](http://requirejs.org/docs/optimization.html#wholeproject)
+[Build file do Apontador](https://github.com/apontador/teco-js/blob/master/examples/build.js)
 
 ```html
 <!DOCTYPE HTML>
