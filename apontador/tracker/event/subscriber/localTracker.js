@@ -3,7 +3,7 @@ define(function () {
     'use strict';
     var event_dictionary = {
             'view': {
-                'utility': {
+                'place_utility': {
                     'event': 'view_utility',
                     'use': ['type', 'partner']
                 },
@@ -15,53 +15,57 @@ define(function () {
                     'event': 'show_first_position_ad',
                     'use': ['place_id']
                 },
-                'sponsored_result_item': {
+                'search_result_sponsored_item': {
                     'event': 'show_sponsored_ad',
                     'use': ['place_id']
                 }
             },
             'click': {
-                'phone': {
+                'place_phone': {
                     'event': 'see_phone',
                     'use': ['place_id']
                 },
-                'site': {
+                'place_website_link': {
                     'event': 'go_to_site',
                     'use': ['place_id']
                 },
-                'toggle_description': {
+                'place_toggle_description': {
                     'event': 'description',
                     'use': ['place_id']
                 },
-                'share': {
+                'place_share': {
                     'event': 'share',
                     'use': ['type'] //email, twitter, facebook
                 },
-                'thumbs': {
+                'place_thumbs': {
                     'event': 'thumbs',
                     'use': ['type'] // up, down
                 },
-                'photo_upload': {
+                'place_photo_upload': {
                     'event': 'send_photo',
                     'use': ['place_id']
                 },
-                'helpful_review': {
+                'place_helpful_review': {
                     'event': 'helpful_review',
                     'use': ['place_id']
                 },
-                'embed_map': {
+                'place_embed_map': {
                     'event': 'maplink_widget',
                     'use': ['place_id']
                 },
-                'utility': {
+                'place_utility': {
                     'event': 'click_utility',
                     'use': ['type', 'partner']
                 },
-                'review': {
+                'place_review': {
                     'event': 'review',
                     'use': ['place_id']
                 },
-                'search_result_item': {
+                'place_directions': {
+                    'event': 'directions',
+                    'use': ['place_id']
+                },
+                'place_ad': {
                     'event': 'ad_click',
                     'use': ['place_id']
                 }
