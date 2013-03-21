@@ -35,7 +35,7 @@ define(function () {
                 },
                 'place_share': {
                     'event': 'share',
-                    'use': ['type'] //email, twitter, facebook
+                    'use': ['type'] //email, twitter, facebook, embed
                 },
                 'place_thumbs': {
                     'event': 'thumbs',
@@ -47,10 +47,6 @@ define(function () {
                 },
                 'place_helpful_review': {
                     'event': 'helpful_review',
-                    'use': ['place_id']
-                },
-                'place_embed_map': {
-                    'event': 'maplink_widget',
                     'use': ['place_id']
                 },
                 'place_utility': {
