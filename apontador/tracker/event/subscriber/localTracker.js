@@ -68,6 +68,10 @@ define(function () {
                 'place_ad': {
                     'event': 'ad_click',
                     'use': ['place_id']
+                },
+                'place_utility_navigator': {
+                    'event': 'view_utility',
+                    'use': ['type', 'partner']
                 }
             }
         };

@@ -19,7 +19,7 @@ require(
                 });
 
                 it("should call the localTracker with the correct event", function () {
-                    localTrackerSub('click', 'thumbs', {'type': 'up'});
+                    localTrackerSub('click', 'place_thumbs', {'type': 'up'});
 
                     expect(window.localTracker.trackEvent.callCount).to.be.ok();
                     expect(window.localTracker.trackEvent.getCall(0).args).to.eql([
@@ -38,7 +38,7 @@ require(
                 it("should call two events on localTracker for utilities", function () {
                     localTrackerSub(
                         'click',
-                        'utility',
+                        'place_utility',
                         {
                             partner: 'bdd',
                             type: 'pass test'
