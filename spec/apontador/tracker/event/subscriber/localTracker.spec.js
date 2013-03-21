@@ -12,12 +12,10 @@ require(
                     window.localTracker = {
                         trackEvent: sinon.spy()
                     };
-                    window.poiId = 'LBSID';
                 });
 
                 afterEach(function () {
                     delete window.localTracker;
-                    delete window.poiId;
                 });
 
                 it("should call the localTracker with the correct event", function () {
