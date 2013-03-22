@@ -68,6 +68,10 @@ define(function () {
                 'place_utility_navigator': {
                     'event': 'view_utility',
                     'use': ['type', 'partner']
+                },
+                'place_review_anchor': {
+                    'event': 'review_anchor',
+                    'use': ['position']
                 }
             }
         };
