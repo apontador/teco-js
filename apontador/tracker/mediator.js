@@ -31,7 +31,6 @@ define(
                         );
                     }
 
-                    console.log(attributes);
                     notify(event_type, data.name, attributes);
                 });
             });
