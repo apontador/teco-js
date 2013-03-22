@@ -9,6 +9,7 @@ require(
 
             beforeEach(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
+                jQuery('body').append('<div class="target" data-foo="bar2" data-baz="loren ipsum"></div>');
                 stubSubscriber = sinon.spy();
             });
 
@@ -43,16 +44,16 @@ require(
                     stubSubscriber
                 ]).track();
 
-                jQuery('.target').trigger('click');
+                jQuery('.target:last').trigger('click');
 
                 expect(stubSubscriber.callCount).to.eql(2);
                 expect(
-                    stubSubscriber.getCall(0).args
+                    stubSubscriber.getCall(1).args
                 ).to.be.eql([
-                    'view',
+                    'click',
                     'event name',
                     {
-                        'foo': 'bar',
+                        'foo': 'bar2',
                         'baz': 'loren ipsum'
                     }
                 ]);

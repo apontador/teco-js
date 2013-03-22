@@ -15,8 +15,14 @@ define(
 
         function notifyByType(data, $target) {
             data.on.forEach(function (event_type) {
-                typeDispatcher.dispatch(event_type, $target, function () {
-                    var attributes = $target.data();
+                typeDispatcher.dispatch(event_type, $target, function (event) {
+                    var attributes;
+
+                    if (typeof event === 'undefined') {
+                        attributes = $target.data();
+                    } else {
+                        attributes = jQuery(event.target).data();
+                    }
 
                     if (data.hasOwnProperty('attributes')) {
                         attributes = jQuery.extend(
@@ -25,6 +31,7 @@ define(
                         );
                     }
 
+                    console.log(attributes);
                     notify(event_type, data.name, attributes);
                 });
             });
@@ -57,9 +64,7 @@ define(
                 checkSetup();
 
                 events_data.forEach(function (data) {
-                    var $target = jQuery(data.selector);
-
-                    notifyByType(data, $target);
+                    notifyByType(data, jQuery(data.selector));
                 });
 
                 return this;

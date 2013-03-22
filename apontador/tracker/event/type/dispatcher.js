@@ -14,13 +14,13 @@ define(function () {
     };
 
     return {
-        'dispatch': function (type, selector, callback) {
+        'dispatch': function (type, $element, callback) {
             if (!handlers.hasOwnProperty(type)) {
                 throw new TypeError(
                     'Event type "' + type + '" is not available'
                 );
             }
-            handlers[type](selector, callback);
+            handlers[type]($element, callback);
         }
     };
 });
