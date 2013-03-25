@@ -35,7 +35,7 @@
         require.config({
             baseUrl: "../",
             //timestamp to avoid cache
-            urlArgs: "v="+(new Date()).getTime(),
+            //urlArgs: "v="+(new Date()).getTime(),
             paths: {
                 'jquery': 'vendor/jquery-1.9.0.min',
                 'jquery.cookie': 'vendor/jquery.cookie'
@@ -57,7 +57,7 @@
         require( node_modules, function () {
 
             mocha.setup('bdd');
-            mocha.globals(['jQuery', '$']);
+            mocha.globals(['jQuery', '$', 'localTracker']);
 
             require( specs, function (){
                 setTimeout(mocha.run, 300);

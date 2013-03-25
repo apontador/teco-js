@@ -33,7 +33,7 @@ require(
             it('should trigger the callback once for each element viewed', function () {
                 var callbackSpy = sinon.spy();
 
-                jQuery('body').append('<div class="target"></div>');
+                jQuery('body').append('<span class="target"></span>');
 
                 $target = jQuery('.target');
 

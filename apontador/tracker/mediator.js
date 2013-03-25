@@ -15,14 +15,8 @@ define(
 
         function notifyByType(data, $target) {
             data.on.forEach(function (event_type) {
-                typeDispatcher.dispatch(event_type, $target, function (event) {
-                    var attributes;
-
-                    if (typeof event === 'undefined') {
-                        attributes = $target.data();
-                    } else {
-                        attributes = jQuery(event.currentTarget).data();
-                    }
+                typeDispatcher.dispatch(event_type, $target, function ($el) {
+                    var attributes = $el.data();
 
                     if (data.hasOwnProperty('attributes')) {
                         attributes = jQuery.extend(
