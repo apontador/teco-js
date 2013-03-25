@@ -16,7 +16,7 @@ require(
             });
 
             afterEach(function () {
-                $target.remove();
+                jQuery('.target').remove();
             });
 
             it('should call a callback when the element is viewed', function () {
@@ -25,6 +25,27 @@ require(
                 typeHandler.dispatch('view', $target, callbackSpy);
 
                 expect(callbackSpy.calledOnce).to.be.ok();
+                expect(callbackSpy.getCall(0).args[0].get()).to.eql([
+                    $target.get(0)
+                ]);
+            });
+
+            it('should trigger the callback once for each element viewed', function () {
+                var callbackSpy = sinon.spy();
+
+                jQuery('body').append('<div class="target"></div>');
+
+                $target = jQuery('.target');
+
+                typeHandler.dispatch('view', $target, callbackSpy);
+
+                expect(callbackSpy.callCount).to.eql(2);
+                expect(callbackSpy.getCall(0).args[0].get()).to.eql([
+                    $target.get(0)
+                ]);
+                expect(callbackSpy.getCall(1).args[0].get()).to.eql([
+                    $target.get(1)
+                ]);
             });
 
             it("should raise an exception when an unimplemented event type is given", function () {
@@ -50,6 +71,9 @@ require(
                 $target.trigger('click');
 
                 expect(callbackSpy.calledOnce).to.be.ok();
+                expect(callbackSpy.getCall(0).args[0].get()).to.eql([
+                    $target.get(0)
+                ]);
             });
         });
     }

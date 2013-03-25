@@ -1,26 +1,31 @@
-/*global define*/
-define(function () {
-    'use strict';
+/*global define, jQuery*/
+define(
+    ['jquery'],
+    function () {
+        'use strict';
 
-    var handlers = {
-        'view': function ($element, callback) {
-            if ($element.length) {
-                callback();
+        var handlers = {
+            'view': function ($element, callback) {
+                $element.each(function (index) {
+                    callback(jQuery(this));
+                });
+            },
+            'click': function ($element, callback) {
+                $element.on('click', function (event) {
+                    callback(jQuery(event.currentTarget));
+                });
             }
-        },
-        'click': function ($element, callback) {
-            $element.on('click', callback);
-        }
-    };
+        };
 
-    return {
-        'dispatch': function (type, $element, callback) {
-            if (!handlers.hasOwnProperty(type)) {
-                throw new TypeError(
-                    'Event type "' + type + '" is not available'
-                );
+        return {
+            'dispatch': function (type, $element, callback) {
+                if (!handlers.hasOwnProperty(type)) {
+                    throw new TypeError(
+                        'Event type "' + type + '" is not available'
+                    );
+                }
+                handlers[type]($element, callback);
             }
-            handlers[type]($element, callback);
-        }
-    };
-});
+        };
+    }
+);
