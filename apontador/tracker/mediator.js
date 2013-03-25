@@ -21,7 +21,7 @@ define(
                     if (typeof event === 'undefined') {
                         attributes = $target.data();
                     } else {
-                        attributes = jQuery(event.target).data();
+                        attributes = jQuery(event.currentTarget).data();
                     }
 
                     if (data.hasOwnProperty('attributes')) {

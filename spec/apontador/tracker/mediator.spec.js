@@ -9,7 +9,7 @@ require(
 
             beforeEach(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
-                jQuery('body').append('<div class="target" data-foo="bar2" data-baz="loren ipsum"></div>');
+                jQuery('body').append('<div class="target" data-foo="bar2" data-baz="loren ipsum"><span class="specific_target"></span></div>');
                 stubSubscriber = sinon.spy();
             });
 
@@ -44,7 +44,7 @@ require(
                     stubSubscriber
                 ]).track();
 
-                jQuery('.target:last').trigger('click');
+                jQuery('.specific_target').trigger('click');
 
                 expect(stubSubscriber.callCount).to.eql(2);
                 expect(
