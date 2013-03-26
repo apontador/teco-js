@@ -27,7 +27,8 @@
             "spec/apontador/retarget/localTracker.spec",
             "spec/apontador/tracker/mediator.spec",
             "spec/apontador/tracker/event/type/dispatcher.spec",
-            "spec/apontador/tracker/event/subscriber/localTracker.spec"
+            "spec/apontador/tracker/event/subscriber/localTracker.spec",
+            "spec/apontador/tracker/event/subscriber/googleAnalytics.spec"
         ];
 
         var expect, assert;
@@ -57,7 +58,7 @@
         require( node_modules, function () {
 
             mocha.setup('bdd');
-            mocha.globals(['jQuery', '$', 'localTracker']);
+            mocha.globals(['jQuery', '$', 'localTracker', 'pageTracker']);
 
             require( specs, function (){
                 setTimeout(mocha.run, 300);
