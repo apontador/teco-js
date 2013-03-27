@@ -11,7 +11,7 @@ define(
                 });
             },
             'click': function ($element, callback) {
-                $element.on('click', function (event) {
+                $element.one('click', function (event) {
                     callback(jQuery(event.currentTarget));
                 });
             }

@@ -75,6 +75,19 @@ require(
                     $target.get(0)
                 ]);
             });
+
+            it('should trigger the click callback just once', function () {
+                var callbackSpy = sinon.spy();
+
+                typeHandler.dispatch('click', $target, callbackSpy);
+
+                expect(callbackSpy.calledOnce).to.not.be.ok();
+
+                $target.trigger('click')
+                    .trigger('click');
+
+                expect(callbackSpy.callCount).to.eql(1);
+            });
         });
     }
 );
