@@ -1,3 +1,4 @@
+/*global define */
 define(
     function () {
         'use strict';
@@ -54,6 +55,10 @@ define(
 
         QueryObject.prototype.get = function (name) {
             return QueryObject.query[name];
+        };
+
+        QueryObject.prototype.remove = function (name) {
+            delete QueryObject.query[name];
         };
 
         QueryObject.prototype.set = function (name, value) {
