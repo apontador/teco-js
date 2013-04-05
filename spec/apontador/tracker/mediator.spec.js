@@ -9,6 +9,7 @@ require(
 
             beforeEach(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
+                jQuery('body').append('<span class="target" data-foo="bar2" data-baz="loren ipsum"><span class="specific_target"></span></span>');
                 stubSubscriber = sinon.spy();
             });
 
@@ -29,7 +30,7 @@ require(
                     stubSubscriber
                 ]).track();
 
-                expect(stubSubscriber.calledOnce).to.be.ok();
+                expect(stubSubscriber.callCount).to.eql(2);
             });
 
             it('should call subscribers with event type, name and attributes', function () {
@@ -43,16 +44,16 @@ require(
                     stubSubscriber
                 ]).track();
 
-                jQuery('.target').trigger('click');
+                jQuery('.specific_target').trigger('click');
 
-                expect(stubSubscriber.callCount).to.eql(2);
+                expect(stubSubscriber.callCount).to.eql(3); // two views and one click
                 expect(
-                    stubSubscriber.getCall(0).args
+                    stubSubscriber.getCall(2).args
                 ).to.be.eql([
-                    'view',
+                    'click',
                     'event name',
                     {
-                        'foo': 'bar',
+                        'foo': 'bar2',
                         'baz': 'loren ipsum'
                     }
                 ]);
@@ -88,6 +89,31 @@ require(
                         "No event assigned to track"
                     );
                 });
+            });
+
+            it('should accept fixed notification attributes', function () {
+                mediator.assign([
+                    {
+                        'name': 'event name',
+                        'selector': '.target',
+                        'on': ['view'],
+                        'attributes': {extra: "xpto"}
+                    }
+                ]).toSubscribers([
+                    stubSubscriber
+                ]).track();
+
+                expect(
+                    stubSubscriber.firstCall.args
+                ).to.eql([
+                    'view',
+                    'event name',
+                    {
+                        'foo': 'bar2',
+                        'baz': 'loren ipsum',
+                        'extra': 'xpto'
+                    }
+                ]);
             });
         });
     }

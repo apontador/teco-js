@@ -13,10 +13,19 @@ define(
             });
         }
 
-        function notifyByType(event_types, name, $target) {
-            event_types.forEach(function (event_type) {
-                typeDispatcher.dispatch(event_type, $target, function () {
-                    notify(event_type, name, $target.data());
+        function notifyByType(data, $target) {
+            data.on.forEach(function (event_type) {
+                typeDispatcher.dispatch(event_type, $target, function ($el) {
+                    var attributes = $el.data();
+
+                    if (data.hasOwnProperty('attributes')) {
+                        attributes = jQuery.extend(
+                            data.attributes,
+                            attributes
+                        );
+                    }
+
+                    notify(event_type, data.name, attributes);
                 });
             });
         }
@@ -48,9 +57,7 @@ define(
                 checkSetup();
 
                 events_data.forEach(function (data) {
-                    var $target = jQuery(data.selector);
-
-                    notifyByType(data.on, data.name, $target);
+                    notifyByType(data, jQuery(data.selector));
                 });
 
                 return this;
