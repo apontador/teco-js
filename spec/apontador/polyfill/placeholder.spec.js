@@ -3,16 +3,21 @@ require(['apontador/polyfill/placeholder', 'apontador/browser/event'], function 
 
     describe('Placeholder polyfill', function () {
 
-        var input;
+        var input, inputPassword;
 
         before(function () {
             input = document.getElementById('inputTest');
+            inputPassword = document.getElementById('passwordTest');
             placeholderPolyfill();
         });
 
         it('should input have same value of placeholder attribute', function () {
             expect(input.value).to.not.be.empty();
             expect(input.value).to.eql(input.attributes.placeholder.value);
+        });
+
+        it('should not apply on input type password', function () {
+            expect(inputPassword.value).to.be.empty();
         });
 
         it('should not put placeholder when the input is filled', function () {
@@ -51,7 +56,6 @@ require(['apontador/polyfill/placeholder', 'apontador/browser/event'], function 
             expect(input.className).to.contain('placeholder-on');
             expect(input.className).to.contain('default');
         });
-
 
     });
 
