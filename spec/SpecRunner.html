@@ -38,7 +38,7 @@
             //timestamp to avoid cache
             urlArgs: "v="+(new Date()).getTime(),
             paths: {
-                'jquery': 'vendor/jquery-1.9.0.min',
+                'jquery': 'vendor/jquery-1.9.1.min',
                 'jquery.cookie': 'vendor/jquery.cookie'
             },
             shim: {
@@ -70,6 +70,9 @@
   </head>
   <body>
     <div id="mocha"></div>
-    <input id="inputTest" placeholder="I am placeholder" type="text" class="default" style="display:none" />
+    <div style="display:none">
+        <input id="inputTest" placeholder="I am placeholder" type="text" class="default" />
+        <input id="passwordTest" placeholder="I am placeholder" type="password" class="default" />
+    </div>
   </body>
 </html>
