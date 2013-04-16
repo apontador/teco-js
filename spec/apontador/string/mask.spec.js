@@ -2,13 +2,13 @@
 require(['apontador/string/mask'], function (phoneMask) {
     'use strict';
     describe("Define phone mask",  function () {
-        describe.skip("of a eight digit number",  function () {
+        describe("of a eight digit number",  function () {
             var eightDigitNumber = '1112345678';
             it("should define correct mask for a eight digit number", function () {
                 expect(phoneMask.getDefinedMask(eightDigitNumber)).to.eql('(99) 9999-9999');
             });
         });
-        describe.skip("of a nine digit number",  function () {
+        describe("of a nine digit number",  function () {
             var nineDigitNumber = '11123456789';
             it("should define correct mask for a nine digit number", function () {
                 expect(phoneMask.getDefinedMask(nineDigitNumber)).to.eql('(99) 99999-9999');
