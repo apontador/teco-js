@@ -4,16 +4,12 @@
     <meta charset="utf-8">
     <title>TecoJS - Tests</title>
     <link href="../components/mocha/mocha.css" rel="stylesheet" media="screen" />
-    <script src="../components/requirejs/require.js"></script>
     <script src="../components/sinon/lib/sinon.js"></script>
+    <script src="../components/sinon/lib/sinon/spy.js"></script>
+    <script src="../components/expect.js/expect.js"></script>
+    <script src="../components/mocha/mocha.js"></script>
+    <script src="../components/requirejs/require.js"></script>
     <script type="text/javascript">
-
-        var node_modules = [
-            "components/expect.js/expect",
-            "components/mocha/mocha",
-            "components/sinon/lib/sinon/spy"
-        ];
-
         var specs = [
             "spec/apontador/parser/url.spec",
             "spec/apontador/parser/querystring.spec",
@@ -55,17 +51,13 @@
             }
         });
 
-        require( node_modules, function () {
 
-            mocha.setup('bdd');
-            mocha.globals(['jQuery', '$', 'localTracker', 'pageTracker']);
+        mocha.setup('bdd');
+        mocha.globals(['jQuery', '$', 'localTracker', 'pageTracker']);
 
-            require( specs, function (){
-                setTimeout(mocha.run, 300);
-            });
+        require( specs, function () {
+            setTimeout(mocha.run, 300);
         });
-
-
     </script>
   </head>
   <body>
