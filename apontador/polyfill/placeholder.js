@@ -7,7 +7,7 @@ define(['../browser/event'], function (eventEmitter) {
                 clsPrefix = ' placeholder-on',
                 elm, i;
 
-            function _createFocusEvent(elm) {
+            function createFocusEvent(elm) {
 
                 eventEmitter.add('focus', elm, function (e) {
 
@@ -23,7 +23,7 @@ define(['../browser/event'], function (eventEmitter) {
 
             }
 
-            function _createBlurEvent(elm) {
+            function createBlurEvent(elm) {
                 eventEmitter.add('blur', elm, function (e) {
 
                     var current = e.target;
@@ -39,7 +39,7 @@ define(['../browser/event'], function (eventEmitter) {
                 });
             }
 
-            for (i = 0; i < inputsCount; i++) {
+            for (i = 0; i < inputsCount; i += 1) {
                 elm = inputs[i];
 
                 if (elm.attributes.placeholder.value && elm.type !== 'password') {
@@ -49,8 +49,8 @@ define(['../browser/event'], function (eventEmitter) {
                         elm.value = elm.attributes.placeholder.value;
                     }
 
-                    _createFocusEvent(elm);
-                    _createBlurEvent(elm);
+                    createFocusEvent(elm);
+                    createBlurEvent(elm);
 
                 } else {
                     continue;
@@ -59,6 +59,5 @@ define(['../browser/event'], function (eventEmitter) {
         };
 
         return placeholderPolyfill;
-
     }
 );

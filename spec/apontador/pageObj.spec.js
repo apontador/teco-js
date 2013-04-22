@@ -1,5 +1,7 @@
 /*global jQuery, jasmine, APT */
 describe("APT.pageObj.user", function () {
+    'use strict';
+
     var user_data = {
             "id": 9909,
             "logged": true,

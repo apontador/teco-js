@@ -5,6 +5,8 @@ require(
         'use strict';
 
         describe('Tracker Event subscriber: Google Analytics', function () {
+            /*jshint nomen:false*/
+
             beforeEach(function () {
                 window.pageTracker = {
                     '_trackPageview': sinon.spy()

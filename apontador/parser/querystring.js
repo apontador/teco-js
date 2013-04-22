@@ -1,4 +1,3 @@
-/*global define */
 define(
     function () {
         'use strict';
@@ -37,7 +36,7 @@ define(
                 query = urlParts[0];
                 params = query.split("&");
 
-                for (index = 0; index < params.length; index++) {
+                for (index = 0; index < params.length; index += 1) {
 
                     paramsIndex = params[index].match(re) || [];
 

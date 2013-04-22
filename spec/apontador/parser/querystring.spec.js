@@ -8,10 +8,11 @@ require(['apontador/parser/querystring'], function (QueryObject) {
             var url = [], queryObject = [];
 
             before(function () {
+                var i;
                 url[0] = "http://site.com",
                 url[1] = "http://site.com/";
 
-                for (var i = 0; i < url.length; i++) {
+                for (i = 0; i < url.length; i += 1) {
                     queryObject[i] = new QueryObject(url[i]);
                 }
             });

@@ -1,3 +1,5 @@
+/*global COOKIE_PREFIX, APT, jQuery*/
+/*jshint unused: false*/
 (function (apt, $) {
     "use strict";
     var cookie_prefix = "";

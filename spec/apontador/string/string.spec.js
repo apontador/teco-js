@@ -1,4 +1,6 @@
 require(['apontador/string/string'], function (String) {
+    'use strict';
+
     describe('String Manipulation', function () {
         describe('Latinize', function () {
             it('should replace latin characters', function () {

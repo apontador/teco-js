@@ -1,8 +1,9 @@
-/*global define*/
 define(function () {
     'use strict';
 
     return function (type, name, attributes) {
+        /*global pageTracker*/
+        /*jshint nomen:false*/
         if (type !== 'click') {
             return;
         }

@@ -6,7 +6,7 @@ define(
 
         var handlers = {
             'view': function ($element, callback) {
-                $element.each(function (index) {
+                $element.each(function () {
                     callback(jQuery(this));
                 });
             },
