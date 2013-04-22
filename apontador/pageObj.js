@@ -16,8 +16,8 @@
         user.logged = !!(data.id);
         user.id = data.id;
 
-        if (typeof data.profile === "object"
-                && typeof data.profile.profilePhoto === "object") {
+        if (typeof data.profile === "object" &&
+            typeof data.profile.profilePhoto === "object") {
 
             fill_profile_photo(user.profilePhoto, data.profile.profilePhoto);
         }
