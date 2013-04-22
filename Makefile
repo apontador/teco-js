@@ -10,9 +10,13 @@ help:
 	@echo test
 	@echo build
 
-install:
-	npm install
+bower:
 	$(BIN_DIR)bower install
+
+npm:
+	npm install
+
+install: npm bower
 
 lint:
 	$(BIN_DIR)jshint \
