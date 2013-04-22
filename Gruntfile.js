@@ -34,4 +34,5 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['mocha:spec']);
+    grunt.registerTask('test', ['mocha:test']);
 };
