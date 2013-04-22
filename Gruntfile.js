@@ -26,13 +26,23 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             }
+        },
+        shell: {
+            bower: {
+                command: 'bower install',
+                options: {
+                    stdout: true
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
     grunt.registerTask('default', ['mocha:spec']);
     grunt.registerTask('test', ['mocha:test']);
+    grunt.registerTask('install', ['shell:bower']);
 };

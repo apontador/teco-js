@@ -14,9 +14,10 @@ Instalação (dev)
 Em seu terminal, execute:
 
 ```bash
+npm install -g bower grunt-cli
 git clone https://github.com/apontador/teco-js.git
 cd teco-js
-make install
+grunt install --dev
 ```
 
 Uso
