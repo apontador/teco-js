@@ -23,7 +23,9 @@ module.exports = function (grunt) {
         },
         jshint: {
             all: ['Gruntfile.js', 'apontador/**/*.js', 'spec/**/*.js'],
-            jshintrc: '.jshintrc'
+            options: {
+                jshintrc: '.jshintrc'
+            }
         }
     });
 
