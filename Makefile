@@ -1,3 +1,7 @@
+BIN_DIR = node_modules/.bin/
+GRUNT_CLI = $(BIN_DIR)grunt
+SPEC_RUNNER = $(GRUNT_CLI) mocha:
+
 default: help
 
 help:
@@ -8,14 +12,20 @@ help:
 
 install:
 	npm install
+	$(BIN_DIR)bower install
 
 lint:
-	./node_modules/.bin/jshint \
+	$(BIN_DIR)jshint \
 		apontador/**/* \
 		spec/**/*
 
-test:
-	open spec/SpecRunner.html
+spectest:
+	$(SPEC_RUNNER)spec
+
+dottest:
+	$(SPEC_RUNNER)test
+
+test: lint spectest
 
 build:
 	bin/r.js -o ../build.js
