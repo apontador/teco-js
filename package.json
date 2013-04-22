@@ -7,7 +7,9 @@
     "url": "git://github.com/apontador/teco-js.git"
   },
   "author": "",
-  "test": "make test",
+  "scripts": {
+    "test": "make test"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",
