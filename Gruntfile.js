@@ -42,8 +42,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Default task(s).
-    grunt.registerTask('default', ['mocha:spec']);
-    grunt.registerTask('test', ['mocha:test']);
     grunt.registerTask('install', ['shell:bower']);
-    grunt.registerTask('ci', ['jshint', 'install', 'default']);
+    grunt.registerTask('default', ['mocha:spec']);
+    grunt.registerTask('test', ['jshint', 'default']);
+    grunt.registerTask('ci', ['install', 'test']);
 };
