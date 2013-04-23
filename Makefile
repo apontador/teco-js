@@ -18,23 +18,13 @@ npm:
 
 install: npm bower
 
-lint:
-	$(BIN_DIR)jshint \
-		apontador/**/* \
-		spec/**/*
-
 spectest:
 	$(SPEC_RUNNER)spec
 
 dottest:
 	$(SPEC_RUNNER)test
 
-test: lint spectest
-
 ci: install test
-
-clean:
-	rm -rf node_modules components
 
 build:
 	bin/r.js -o ../build.js
