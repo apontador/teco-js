@@ -18,13 +18,17 @@ npm:
 
 install: npm bower
 
+test:
+	npm test
+
 spectest:
 	$(SPEC_RUNNER)spec
 
 dottest:
 	$(SPEC_RUNNER)test
 
-ci: install test
-
 build:
 	bin/r.js -o ../build.js
+
+clean:
+	rm -rf components node_modules
