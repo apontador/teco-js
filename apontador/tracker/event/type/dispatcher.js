@@ -7,7 +7,7 @@ define(
         var handlers = {
             'view': function ($element, callback) {
                 $element.each(function (index) {
-                    if (jq(this).is(":visible")) {
+                    if ($(this).is(":visible")) {
                         callback(jQuery(this));
                     }    
                 });
