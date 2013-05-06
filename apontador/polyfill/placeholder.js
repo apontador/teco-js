@@ -42,7 +42,7 @@ define(['../browser/event'], function (eventEmitter) {
             for (i = 0; i < inputsCount; i++) {
                 elm = inputs[i];
 
-                if (elm.attributes.placeholder.value) {
+                if (elm.attributes.placeholder.value && elm.type !== 'password') {
 
                     if (elm.value === '') {
                         elm.className += clsPrefix;
@@ -52,6 +52,8 @@ define(['../browser/event'], function (eventEmitter) {
                     _createFocusEvent(elm);
                     _createBlurEvent(elm);
 
+                } else {
+                    continue;
                 }
             }
         };
