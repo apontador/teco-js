@@ -1,4 +1,4 @@
-/*global define, jQuery*/
+/*global define, jQuery, $*/
 define(
     ['jquery'],
     function () {
@@ -7,7 +7,9 @@ define(
         var handlers = {
             'view': function ($element, callback) {
                 $element.each(function () {
-                    callback(jQuery(this));
+                    if ($(this).is(":visible")) {
+                        callback(jQuery(this));
+                    }
                 });
             },
             'click': function ($element, callback) {
