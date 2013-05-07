@@ -1,4 +1,4 @@
-Teco.js [![Build Status](https://secure.travis-ci.org/apontador/teco-js.png)](http://travis-ci.org/apontador/teco-js)
+Teco.js [![Build Status](https://secure.travis-ci.org/apontador/teco-js.png?branch=master)](http://travis-ci.org/apontador/teco-js)
 =======
 
 Componentes JavaScript do Apontador
