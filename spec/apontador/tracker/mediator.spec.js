@@ -9,7 +9,7 @@ require(
 
             beforeEach(function () {
                 jQuery('body').append('<div class="target" data-foo="bar" data-baz="loren ipsum"></div>');
-                jQuery('body').append('<span class="target" data-foo="bar2" data-baz="loren ipsum"><span class="specific_target"></span></span>');
+                jQuery('body').append('<span class="target" style="visibility: hidden;" data-foo="bar2" data-baz="loren ipsum"><span class="specific_target"></span></span>');
                 stubSubscriber = sinon.spy();
             });
 
@@ -30,7 +30,7 @@ require(
                     stubSubscriber
                 ]).track();
 
-                expect(stubSubscriber.callCount).to.eql(2);
+                expect(stubSubscriber.callCount).to.eql(1);
             });
 
             it('should call subscribers with event type, name and attributes', function () {
@@ -46,9 +46,9 @@ require(
 
                 jQuery('.specific_target').trigger('click');
 
-                expect(stubSubscriber.callCount).to.eql(3); // two views and one click
+                expect(stubSubscriber.callCount).to.eql(2); // one view and one click
                 expect(
-                    stubSubscriber.getCall(2).args
+                    stubSubscriber.getCall(1).args
                 ).to.be.eql([
                     'click',
                     'event name',
@@ -109,9 +109,9 @@ require(
                     'view',
                     'event name',
                     {
-                        'foo': 'bar2',
-                        'baz': 'loren ipsum',
-                        'extra': 'xpto'
+                        'extra': 'xpto',
+                        'foo': 'bar',
+                        'baz': 'loren ipsum'
                     }
                 ]);
             });

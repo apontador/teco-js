@@ -30,21 +30,19 @@ require(
                 ]);
             });
 
-            it('should trigger the callback once for each element viewed', function () {
+            it('should trigger the callback once for each visible element viewed', function () {
                 var callbackSpy = sinon.spy();
 
                 jQuery('body').append('<span class="target"></span>');
+                jQuery('body').append('<span class="target" style="visibility: hidden;"></span>');
 
                 $target = jQuery('.target');
 
                 typeHandler.dispatch('view', $target, callbackSpy);
 
-                expect(callbackSpy.callCount).to.eql(2);
+                expect(callbackSpy.callCount).to.eql(1);
                 expect(callbackSpy.getCall(0).args[0].get()).to.eql([
                     $target.get(0)
-                ]);
-                expect(callbackSpy.getCall(1).args[0].get()).to.eql([
-                    $target.get(1)
                 ]);
             });
 
