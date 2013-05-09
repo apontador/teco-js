@@ -1,4 +1,4 @@
-/*global define, jQuery, $*/
+/*global define, jQuery*/
 define(
     ['jquery'],
     function () {
