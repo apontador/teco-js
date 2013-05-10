@@ -25,6 +25,10 @@ define(function () {
                     'event': 'see_phone',
                     'use': ['place_id']
                 },
+                'search_result_place_phone': {
+                    'event': 'see_phone',
+                    'use': ['place_id']
+                },
                 'place_website_link': {
                     'event': 'go_to_site',
                     'use': ['place_id']
