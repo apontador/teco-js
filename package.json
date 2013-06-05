@@ -1,6 +1,6 @@
 {
   "name": "teco.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Apontador's modular javascript components",
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "grunt-cli": "~0.1.7",
     "mocha": "~1.9.0",
     "sinon": "~1.6.0",
-    "expect.js": "~0.2.0"
+    "expect.js": "~0.2.0",
+    "grunt-release": "~0.3.5"
   }
 }
