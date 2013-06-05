@@ -34,12 +34,16 @@ module.exports = function (grunt) {
                     stdout: true
                 }
             }
+        },
+        release: {
+            file: 'bower.json'
         }
     });
 
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-release');
 
     // Default task(s).
     grunt.registerTask('install', ['shell:bower']);
