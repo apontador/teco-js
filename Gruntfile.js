@@ -36,7 +36,8 @@ module.exports = function (grunt) {
             }
         },
         release: {
-            file: 'bower.json'
+            file: 'bower.json',
+            npm: false
         }
     });
 
