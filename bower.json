@@ -1,5 +1,6 @@
 {
   "name": "teco.js",
+  "version": "0.1.2",
   "ignore": [
     "**/.*",
     "node_modules",
