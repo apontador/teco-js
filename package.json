@@ -15,7 +15,7 @@
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-mocha": "~0.3.1",
     "grunt-shell": "~0.2.2",
-    "bower": "~0.8.6",
+    "bower": ">=0.9",
     "grunt-cli": "~0.1.7",
     "mocha": "~1.9.0",
     "sinon": "~1.6.0",
