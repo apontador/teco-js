@@ -1,6 +1,7 @@
 /components
 /node_modules
 /compiled
+/reports
 *.swo
 *.swp
 logjshint.txt

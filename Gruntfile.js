@@ -41,6 +41,16 @@ module.exports = function (grunt) {
                 npm: false,
                 tagName: 'v<%= version %>'
             }
+        },
+        plato: {
+            options: {
+                jshint : grunt.file.readJSON('.jshintrc')
+            },
+            quality: {
+                files: {
+                    'reports': ['apontador/**/*.js']
+                }
+            }
         }
     });
 
@@ -48,10 +58,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-release');
+    grunt.loadNpmTasks('grunt-plato');
 
     // Default task(s).
     grunt.registerTask('install', ['shell:bower']);
     grunt.registerTask('default', ['mocha:spec']);
+    grunt.registerTask('report', ['plato:report']);
     grunt.registerTask('test', ['jshint', 'default']);
     grunt.registerTask('ci', ['install', 'test']);
 };
