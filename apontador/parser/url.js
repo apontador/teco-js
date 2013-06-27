@@ -1,4 +1,4 @@
-define(['../string/trim'],
+define(['apontador/polyfill/trim'],
     function () {
         'use strict';
         var poi, isPoiPathname;

@@ -1,4 +1,4 @@
-require(['apontador/string/trim'], function () {
+require(['apontador/polyfill/trim'], function () {
     'use strict';
 
     describe("Trim crossbrowser",  function () {
