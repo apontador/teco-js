@@ -73,7 +73,7 @@ require(
                 }).to.throwException(function (e) {
                     expect(e).to.be.a(TypeError);
                     expect(e.message).to.eql(
-                        "No subscriber found when tracking started"
+                        'No subscriber found when tracking started'
                     );
                 });
             });
@@ -86,7 +86,7 @@ require(
                 }).to.throwException(function (e) {
                     expect(e).to.be.a(TypeError);
                     expect(e.message).to.be.eql(
-                        "No event assigned to track"
+                        'No event assigned to track'
                     );
                 });
             });
@@ -97,7 +97,7 @@ require(
                         'name': 'event name',
                         'selector': '.target',
                         'on': ['view'],
-                        'attributes': {extra: "xpto"}
+                        'attributes': {extra: 'xpto'}
                     }
                 ]).toSubscribers([
                     stubSubscriber

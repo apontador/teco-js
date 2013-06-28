@@ -1,8 +1,8 @@
 /*global define, navigator*/
 define(function () {
-    "use strict";
+    'use strict';
     var Detector = function (agent) {
-        this.agent = agent || navigator.userAgent || "";
+        this.agent = agent || navigator.userAgent || '';
     };
 
     Detector.prototype.isMobile = function () {

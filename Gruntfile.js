@@ -1,6 +1,6 @@
 /*jshint scripturl:true*/
 module.exports = function (grunt) {
-    "use strict";
+    'use strict';
 
     // Project configuration.
     grunt.initConfig({

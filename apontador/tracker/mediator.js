@@ -5,7 +5,7 @@ define(
         'use strict';
 
         var subscribers = [],
-            events_data = [];
+            eventsData = [];
 
         function notify(type, name, attributes) {
             subscribers.forEach(function (subscriber) {
@@ -14,8 +14,8 @@ define(
         }
 
         function notifyByType(data, $target) {
-            data.on.forEach(function (event_type) {
-                typeDispatcher.dispatch(event_type, $target, function ($el) {
+            data.on.forEach(function (eventType) {
+                typeDispatcher.dispatch(eventType, $target, function ($el) {
                     var attributes = $el.data();
 
                     if (data.hasOwnProperty('attributes')) {
@@ -25,7 +25,7 @@ define(
                         );
                     }
 
-                    notify(event_type, data.name, attributes);
+                    notify(eventType, data.name, attributes);
                 });
             });
         }
@@ -33,30 +33,30 @@ define(
         function checkSetup() {
             if (subscribers.length === 0) {
                 throw new TypeError(
-                    "No subscriber found when tracking started"
+                    'No subscriber found when tracking started'
                 );
             }
 
-            if (events_data.length === 0) {
+            if (eventsData.length === 0) {
                 throw new TypeError(
-                    "No event assigned to track"
+                    'No event assigned to track'
                 );
             }
         }
 
         return {
             'assign': function (data) {
-                events_data = data;
+                eventsData = data;
                 return this;
             },
-            'toSubscribers': function (subscribers_array) {
-                subscribers = subscribers_array;
+            'toSubscribers': function (subscribersList) {
+                subscribers = subscribersList;
                 return this;
             },
             'track': function () {
                 checkSetup();
 
-                events_data.forEach(function (data) {
+                eventsData.forEach(function (data) {
                     notifyByType(data, jQuery(data.selector));
                 });
 
@@ -64,7 +64,7 @@ define(
             },
             'clear': function () {
                 subscribers = [];
-                events_data = [];
+                eventsData = [];
             }
         };
     }

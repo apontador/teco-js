@@ -30,11 +30,11 @@ require(['apontador/tracker/gm'], function (gmTracker) {
             expect(
                 imageTracker[0].getAttribute('src')
             ).to.eql(
-                'http://gmlabr.112.2o7.net/b/ss/gmbr-apontadorchevrolet'
-                    + ',gmbr-geral/1/H.25.2--NS/0?AQB=1&pccr=true&g=none'
-                    + '&&cdp=3&AQE=1&pageName=Apontador:Chevrolet:'
-                    + 'arabia%20jardins:sao%20paulo:sp&ch=Apontador'
-                    + ':Chevrolet:Concessionaria'
+                'http://gmlabr.112.2o7.net/b/ss/gmbr-apontadorchevrolet' +
+                    ',gmbr-geral/1/H.25.2--NS/0?AQB=1&pccr=true&g=none' +
+                    '&&cdp=3&AQE=1&pageName=Apontador:Chevrolet:' +
+                    'arabia%20jardins:sao%20paulo:sp&ch=Apontador' +
+                    ':Chevrolet:Concessionaria'
             );
         });
 

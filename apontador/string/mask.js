@@ -2,7 +2,7 @@ define(
     function () {
         'use strict';
         return {
-            "getDefinedMask": function (phonenumber) {
+            'getDefinedMask': function (phonenumber) {
                 // Reference http://en.wikipedia.org/wiki/Toll-free_telephone_number
                 if (/^0[\d]00/.test(phonenumber)) {
                     return '9999 99999999';

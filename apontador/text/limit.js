@@ -2,24 +2,24 @@ define(function () {
     'use strict';
 
     return function (text, limit, concat) {
-        var text_limited = false;
+        var textLimited = false;
         if (!limit) {
             limit = 10;
         }
         if (!concat) {
-            concat = "...";
+            concat = '...';
         }
 
         if (text) {
-            text_limited = text;
+            textLimited = text;
         }
 
-        if (text_limited) {
-            if (text_limited.length > limit) {
-                text_limited = text.substr(0, limit);
-                text_limited += concat;
+        if (textLimited) {
+            if (textLimited.length > limit) {
+                textLimited = text.substr(0, limit);
+                textLimited += concat;
             }
         }
-        return text_limited;
+        return textLimited;
     };
 });

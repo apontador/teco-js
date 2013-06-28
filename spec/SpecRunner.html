@@ -11,29 +11,29 @@
     <script src="../components/requirejs/require.js"></script>
     <script type="text/javascript">
         var specs = [
-            "spec/apontador/text/limit.spec",
-            "spec/apontador/parser/url.spec",
-            "spec/apontador/parser/querystring.spec",
-            "spec/apontador/tracker/gm.spec",
-            "spec/apontador/string/string.spec",
-            "spec/apontador/string/mask.spec",
-            "spec/apontador/polyfill/trim.spec",
-            "spec/apontador/polyfill/placeholder.spec",
-            "spec/apontador/browser/detector.spec",
-            "spec/apontador/browser/event.spec",
-            "spec/apontador/retarget/localTracker.spec",
-            "spec/apontador/tracker/mediator.spec",
-            "spec/apontador/tracker/event/type/dispatcher.spec",
-            "spec/apontador/tracker/event/subscriber/localTracker.spec",
-            "spec/apontador/tracker/event/subscriber/googleAnalytics.spec"
+            'spec/apontador/text/limit.spec',
+            'spec/apontador/parser/url.spec',
+            'spec/apontador/parser/querystring.spec',
+            'spec/apontador/tracker/gm.spec',
+            'spec/apontador/string/string.spec',
+            'spec/apontador/string/mask.spec',
+            'spec/apontador/polyfill/trim.spec',
+            'spec/apontador/polyfill/placeholder.spec',
+            'spec/apontador/browser/detector.spec',
+            'spec/apontador/browser/event.spec',
+            'spec/apontador/retarget/localTracker.spec',
+            'spec/apontador/tracker/mediator.spec',
+            'spec/apontador/tracker/event/type/dispatcher.spec',
+            'spec/apontador/tracker/event/subscriber/localTracker.spec',
+            'spec/apontador/tracker/event/subscriber/googleAnalytics.spec'
         ];
 
         var expect, assert;
 
         require.config({
-            baseUrl: "../",
+            baseUrl: '../',
             //timestamp to avoid cache
-            urlArgs: "v="+(new Date()).getTime(),
+            urlArgs: 'v='+(new Date()).getTime(),
             paths: {
                 'jquery': 'components/jquery/jquery',
                 'jquery.cookie': 'components/jquery.cookie/jquery.cookie'

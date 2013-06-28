@@ -1,7 +1,7 @@
 require(['apontador/polyfill/trim'], function () {
     'use strict';
 
-    describe("Trim crossbrowser",  function () {
+    describe('Trim crossbrowser',  function () {
 
         var expected = 'foo bar';
 

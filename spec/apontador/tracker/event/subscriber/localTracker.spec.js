@@ -5,7 +5,7 @@ require(
         'use strict';
 
         describe(
-            "Tracker Event Subscriber: LocalTracker",
+            'Tracker Event Subscriber: LocalTracker',
             function () {
 
                 beforeEach(function () {
@@ -18,7 +18,7 @@ require(
                     delete window.localTracker;
                 });
 
-                it("should call the localTracker with the correct event", function () {
+                it('should call the localTracker with the correct event', function () {
                     localTrackerSub('click', 'place_thumbs', {'type': 'up'});
 
                     expect(window.localTracker.trackEvent.callCount).to.be.ok();
@@ -28,14 +28,14 @@ require(
                     ]);
                 });
 
-                it("should handle unknown events", function () {
+                it('should handle unknown events', function () {
                     localTrackerSub('unknown', 'unexistent');
 
                     expect(window.localTracker.trackEvent.calledOnce)
                         .to.not.be.ok();
                 });
 
-                it("should call two events on localTracker for utilities", function () {
+                it('should call two events on localTracker for utilities', function () {
                     localTrackerSub(
                         'click',
                         'place_utility',

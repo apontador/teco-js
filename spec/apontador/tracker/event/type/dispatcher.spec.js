@@ -46,7 +46,7 @@ require(
                 ]);
             });
 
-            it("should raise an exception when an unimplemented event type is given", function () {
+            it('should raise an exception when an unimplemented event type is given', function () {
                 var callbackSpy = sinon.spy();
 
                 expect(function () {

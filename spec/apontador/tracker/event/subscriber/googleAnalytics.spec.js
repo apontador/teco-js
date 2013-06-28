@@ -16,7 +16,7 @@ require(
                 delete window.pageTracker;
             });
 
-            it("should track a phone click", function () {
+            it('should track a phone click', function () {
                 googleAnalyticsSub(
                     'click',
                     'place_phone',
@@ -39,7 +39,7 @@ require(
                     'click',
                     'place_website_link',
                     {
-                        'place_id': 'LBSID',
+                        'place_id': 'LBSID'
                     }
                 );
 
@@ -56,7 +56,7 @@ require(
                     'click',
                     'unknown',
                     {
-                        'place_id': 'LBSID',
+                        'place_id': 'LBSID'
                     }
                 );
 
@@ -69,7 +69,7 @@ require(
                     'view',
                     'place_phone',
                     {
-                        'place_id': 'LBSID',
+                        'place_id': 'LBSID'
                     }
                 );
 

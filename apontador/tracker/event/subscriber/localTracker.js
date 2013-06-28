@@ -1,7 +1,7 @@
 /*global localTracker, define*/
 define(function () {
     'use strict';
-    var event_dictionary = {
+    var eventDictionary = {
             'view': {
                 'place_utility': {
                     'event': 'view_utility',
@@ -76,8 +76,8 @@ define(function () {
             }
         };
 
-    function trackMultiple(event, use_attributes, attributes) {
-        use_attributes.forEach(function (key) {
+    function trackMultiple(event, useAttributes, attributes) {
+        useAttributes.forEach(function (key) {
             if (attributes.hasOwnProperty(key)) {
                 localTracker.trackEvent(
                     event + '_' + key,
@@ -91,23 +91,23 @@ define(function () {
         localTracker.trackEvent(event, attribute);
     }
 
-    function track(event, use_attributes, attributes) {
-        if (use_attributes.length > 1) {
-            trackMultiple(event, use_attributes, attributes);
+    function track(event, useAttributes, attributes) {
+        if (useAttributes.length > 1) {
+            trackMultiple(event, useAttributes, attributes);
         } else {
-            trackSingle(event, attributes[use_attributes[0]]);
+            trackSingle(event, attributes[useAttributes[0]]);
         }
     }
 
     return function (type, name, attributes) {
         var data;
 
-        if (!event_dictionary.hasOwnProperty(type)
-                || !event_dictionary[type].hasOwnProperty(name)) {
+        if (!eventDictionary.hasOwnProperty(type) ||
+                !eventDictionary[type].hasOwnProperty(name)) {
             return;
         }
 
-        data = event_dictionary[type][name];
+        data = eventDictionary[type][name];
 
         track(data.event, data.use, attributes);
     };

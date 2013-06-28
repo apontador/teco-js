@@ -15,10 +15,10 @@ define(
                 urlParts = [],
                 params = [],
                 paramsIndex = '',
-                query = "",
+                query = '',
                 index = 0,
-                key = "",
-                value = "",
+                key = '',
+                value = '',
                 queryObject = {},
                 findHash = url.split('#');
 
@@ -34,7 +34,7 @@ define(
 
                 urlParts = url.match(re);
                 query = urlParts[0];
-                params = query.split("&");
+                params = query.split('&');
 
                 for (index = 0; index < params.length; index += 1) {
 
@@ -76,7 +76,7 @@ define(
             var str = '', p;
             for (p in QueryObject.query) {
                 if (QueryObject.query.hasOwnProperty(p)) {
-                    str += str.length ? "&" : "?";
+                    str += str.length ? '&' : '?';
                     str += p + '=' + QueryObject.query[p];
                 }
             }
