@@ -1,25 +1,25 @@
 define(function () {
     'use strict';
 
-    return function (text, limit, concat) {
-        var textLimited = false;
+    return function (text, limit, ellipsis) {
+        if (typeof text !== 'string') {
+            throw new TypeError(
+                'The text argument of limit wasn\'t given or isn\'t a string'
+            );
+        }
+
         if (!limit) {
-            limit = 10;
-        }
-        if (!concat) {
-            concat = '...';
+            return text;
         }
 
-        if (text) {
-            textLimited = text;
+        if (!ellipsis) {
+            ellipsis = '...';
         }
 
-        if (textLimited) {
-            if (textLimited.length > limit) {
-                textLimited = text.substr(0, limit);
-                textLimited += concat;
-            }
+        if (text.length > limit) {
+            text = text.substr(0, limit);
+            text += ellipsis;
         }
-        return textLimited;
+        return text;
     };
 });

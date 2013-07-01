@@ -22,6 +22,17 @@ require([
             var text = limit('aaaaa', 4, ' >> more');
             expect(text).to.eql('aaaa >> more');
         });
+
+        it('should return the entire text when no limit is given', function () {
+            var text = limit('aaaaaaaaaaa');
+            expect(text).to.eql('aaaaaaaaaaa');
+        });
+
+        it('should throw an Error when text isn\'t given', function () {
+            expect(function () {
+                limit();
+            }).to.throwError('The text argument of limit wasn\'t given or isn\'t a string');
+        });
     });
 });
 
