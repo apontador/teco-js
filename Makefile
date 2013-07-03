@@ -13,7 +13,7 @@ help:
 
 npm:
 	@npm install
-npm:
+bower:
 	@bower install
 jscomponents:
 	@grunt install
