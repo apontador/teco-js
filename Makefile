@@ -1,7 +1,6 @@
 COMPONENTS_DIR = components/
 MODULES_DIR = node_modules/
 BIN_DIR = $(MODULES_DIR).bin/
-GRUNT_CLI = $(BIN_DIR)grunt
 
 default: help
 
@@ -16,12 +15,12 @@ npm:
 	npm install
 
 jscomponents:
-	$(GRUNT_CLI) install
+	grunt install
 
 install: npm jscomponents
 
 test:
-	$(GRUNT_CLI) test
+	grunt test
 
 clean:
 	rm -rf $(COMPONENTS_DIR) $(MODULES_DIR)
