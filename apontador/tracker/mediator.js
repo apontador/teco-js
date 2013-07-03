@@ -1,6 +1,6 @@
 /*global define, jQuery*/
 define(
-    ['apontador/tracker/event/type/dispatcher', 'jquery'],
+    ['apontador/tracker/event/type/dispatcher', 'jquery', 'apontador/polyfill/foreach'],
     function (typeDispatcher) {
         'use strict';
 
