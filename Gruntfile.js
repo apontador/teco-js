@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         },
         shell: {
             bower: {
-                command: 'node_modules/.bin/bower install',
+                command: 'bower install',
                 options: {
                     stdout: true
                 }

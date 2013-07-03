@@ -12,15 +12,18 @@ help:
 	@echo clean
 
 npm:
-	npm install
-
+	@npm install
+npm:
+	@bower install
 jscomponents:
-	grunt install
+	@grunt install
 
 install: npm jscomponents
 
 test:
-	grunt test
+	@grunt test
 
 clean:
 	rm -rf $(COMPONENTS_DIR) $(MODULES_DIR)
+env:
+	@npm install -g grunt-cli bower
