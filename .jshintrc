@@ -7,8 +7,10 @@
         "sinon": false,
         "should": false,
         "expect": false,
-        "before":false,
-        "after": false
+        "before": false,
+        "after": false,
+        "beforeEach": false,
+        "afterEach": false
     },
     "browser": true,
     "jquery": true,
