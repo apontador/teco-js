@@ -4,7 +4,8 @@ define([
     'use strict';
 
     $.fn.countText = function (counterElement) {
-        var $counter = $(counterElement);
+        var $counter = $(counterElement),
+            self = this;
 
         function printCounter($element, $counter) {
             $counter.html($element.val().length);
@@ -13,7 +14,7 @@ define([
         printCounter(this, $counter);
 
         this.on('keyup', function () {
-            printCounter($(this), $counter);
+            printCounter(self, $counter);
         });
     };
 });
