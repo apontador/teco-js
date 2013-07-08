@@ -7,14 +7,12 @@ define([
         var $counter = $(counterElement),
             self = this;
 
-        function printCounter($element, $counter) {
-            $counter.html($element.val().length);
+        function printCounter() {
+            $counter.html(self.val().length);
         }
 
-        printCounter(this, $counter);
+        printCounter();
 
-        this.on('keyup', function () {
-            printCounter(self, $counter);
-        });
+        this.on('keyup', printCounter);
     };
 });
