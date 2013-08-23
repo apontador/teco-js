@@ -1,16 +1,16 @@
-Teco.js [![Build Status](https://secure.travis-ci.org/apontador/teco-js.png?branch=master)](http://travis-ci.org/apontador/teco-js)
+Teco.js [![Build Status](https://secure.travis-ci.org/apontador/teco-js.png?branch=master)](http://travis-ci.org/apontador/teco-js) [![Stories in Ready](http://badge.waffle.io/apontador/teco-js.png)](http://waffle.io/apontador/teco-js)  
 =======
 
 Componentes JavaScript do Apontador
-
+ 
 Dependências
 ------------
-
-* [Node.js & NPM](http://nodejs.org/download/)
-
+ 
+ * [Node.js & NPM](http://nodejs.org/download/)
+ 
 Instalação (dev)
 ----------------
-
+ 
 Em seu terminal, execute:
 
 ```bash
@@ -22,9 +22,9 @@ grunt install --dev
 
 Uso
 ---
-
+ 
 Para começar a utilizar *teco* em seu projeto, só são necessários três passos:
-
+ 
 ### 1. Importar
 
 A forma mais fácil de importar o *teco* e manter o controle da versão é através dos submódulos do git. Para isso, execute:
