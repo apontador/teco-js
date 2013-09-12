@@ -4,7 +4,14 @@ define([
 ], function ($, limitText) {
     'use strict';
 
-    $.fn.limitText = function () {
+    $.fn.limitText = function (config) {
+        var parameters = $.extend(
+            {
+                'summary_class': 'summary',
+                'ellipsis_link_class': ''
+            },
+            config
+        );
         this.each(function (key, element) {
             var $element = $(element),
                 limit,
@@ -20,11 +27,13 @@ define([
 
             if (text.length > limit) {
                 limitedText = limitText(text, limit, '...');
-                $summary = $('<span class="summary">' + limitedText + '</span>');
+                $summary = $('<span class="' + parameters.summary_class + '">' + limitedText + '</span>');
                 $expandHandler = [];
 
                 if (label) {
-                    $expandHandler = $('<a href="#" title="' + label + '">' + label + ' <small>▼</small></a>');
+                    $expandHandler = $(
+                        '<a class="' + parameters.ellipsis_link_class + '" href="#" title="' + label + '">' + label + ' <small>▼</small></a>'
+                    );
 
                     $expandHandler.on('click', function (e) {
                         e.preventDefault();
