@@ -7,8 +7,8 @@ define([
     $.fn.limitText = function (config) {
         var parameters = $.extend(
             {
-                'summary_class': 'summary',
-                'ellipsis_link_class': ''
+                'summaryClass': 'summary',
+                'ellipsisLinkClass': ''
             },
             config
         );
@@ -27,12 +27,12 @@ define([
 
             if (text.length > limit) {
                 limitedText = limitText(text, limit, '...');
-                $summary = $('<span class="' + parameters.summary_class + '">' + limitedText + '</span>');
+                $summary = $('<span class="' + parameters.summaryClass + '">' + limitedText + '</span>');
                 $expandHandler = [];
 
                 if (label) {
                     $expandHandler = $(
-                        '<a class="' + parameters.ellipsis_link_class + '" href="#" title="' + label + '">' + label + ' <small>▼</small></a>'
+                        '<a class="' + parameters.ellipsisLinkClass + '" href="#" title="' + label + '">' + label + ' <small>▼</small></a>'
                     );
 
                     $expandHandler.on('click', function (e) {
