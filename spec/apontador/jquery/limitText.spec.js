@@ -31,7 +31,7 @@ require([
                 var $el = $('<p data-limit="15" data-label="more">a 20 characters text</p>');
                 $el.limitText();
                 expect($el.html()).to.match(
-                    /<a href="#" title="more">more <small>▼<\/small><\/a>$/
+                    /<a class="" href="#" title="more">more <small>▼<\/small><\/a>$/
                 );
             });
 
