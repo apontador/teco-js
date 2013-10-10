@@ -1,4 +1,4 @@
-/*global require, describe, it, beforeEach, afterEach, sinon, expect, window*/
+/*global require, describe, it, beforeEach, afterEach, expect, window*/
 require(
     ['apontador/tracker/event/subscriber/googleAnalytics'],
     function (googleAnalyticsSub) {
@@ -8,47 +8,26 @@ require(
             /*jshint nomen:false*/
 
             beforeEach(function () {
-                window.pageTracker = {
-                    '_trackPageview': sinon.spy()
-                };
+                window._gaq = [];
             });
             afterEach(function () {
-                delete window.pageTracker;
+                delete window._gaq;
             });
 
-            it('should track a phone click', function () {
+            it('should track a click', function () {
+                var name = 'call-to-review',
+                    value = '1234';
+
                 googleAnalyticsSub(
                     'click',
-                    'place_phone',
+                    'track_click',
                     {
-                        'place_id': 'LBSID',
-                        'name': 'Foo Pub'
+                        'name': name,
+                        'value': value
                     }
                 );
 
-                expect(window.pageTracker._trackPageview.calledOnce)
-                    .to.be.ok();
-                expect(window.pageTracker._trackPageview.firstCall.args)
-                    .to.eql([
-                        '/contabilizacao/poi/LBSID/Foo Pub/vertelefone.html'
-                    ]);
-            });
-
-            it('should track a click on the place website link', function () {
-                googleAnalyticsSub(
-                    'click',
-                    'place_website_link',
-                    {
-                        'place_id': 'LBSID'
-                    }
-                );
-
-                expect(window.pageTracker._trackPageview.calledOnce)
-                    .to.be.ok();
-                expect(window.pageTracker._trackPageview.firstCall.args)
-                    .to.eql([
-                        '/contabilizacao/poi/LBSID/Mais_informacoes.html'
-                    ]);
+                expect(window._gaq[0]).to.eql(['_trackEvent', name, value]);
             });
 
             it('should not track an unknown event', function () {
@@ -60,8 +39,7 @@ require(
                     }
                 );
 
-                expect(window.pageTracker._trackPageview.callCount)
-                    .to.eql(0);
+                expect(window._gaq.length).to.eql(0);
             });
 
             it('should not track unsupported event types', function () {
@@ -73,8 +51,7 @@ require(
                     }
                 );
 
-                expect(window.pageTracker._trackPageview.callCount)
-                    .to.eql(0);
+                expect(window._gaq.length).to.eql(0);
             });
         });
     }
